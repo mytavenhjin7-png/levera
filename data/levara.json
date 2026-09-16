@@ -1,0 +1,46 @@
+{
+  "customers": [],
+  "orders": [],
+  "products": [
+    {
+      "id": "cloud-pleat-lamp",
+      "name": "Cloud Pleat Lamp",
+      "price": 38,
+      "currency": "USD",
+      "stock": 24,
+      "source": "Taobao",
+      "weightKg": 0.8,
+      "supplierUrl": "https://item.taobao.com/"
+    },
+    {
+      "id": "orbit-glasses",
+      "name": "Orbit Glasses",
+      "price": 24,
+      "currency": "USD",
+      "stock": 40,
+      "source": "Pinduoduo",
+      "weightKg": 0.2,
+      "supplierUrl": "https://mobile.yangkeduo.com/"
+    },
+    {
+      "id": "fold-utility-tote",
+      "name": "Fold Utility Tote",
+      "price": 42,
+      "currency": "USD",
+      "stock": 18,
+      "source": "1688",
+      "weightKg": 0.5,
+      "supplierUrl": "https://s.1688.com/"
+    },
+    {
+      "id": "soft-form-chair",
+      "name": "Soft Form Chair",
+      "price": 149,
+      "currency": "USD",
+      "stock": 8,
+      "source": "Taobao",
+      "weightKg": 7,
+      "supplierUrl": "https://item.taobao.com/"
+    }
+  ]
+}
