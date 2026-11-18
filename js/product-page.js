@@ -55,7 +55,9 @@
         '<div class="pdp-cta"><button type="button" class="btn ink" id="pAdd"><span>' + t.quick + '</span><span aria-hidden="true">+</span></button><button type="button" class="btn" id="pBuy"><span>' + t.p_buy + '</span><span aria-hidden="true">→</span></button></div>' +
         '<div class="pdp-actions"><button type="button" class="pdp-act fav-btn" data-fav="' + esc(p.id) + '" aria-pressed="' + !!(LV.isSaved && LV.isSaved(p.id)) + '"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg><span class="mono">' + t.fav_save + '</span></button>' +
           '<button type="button" class="pdp-act" data-share><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span class="mono">' + t.share + '</span></button></div>' +
+        '<a class="pdp-call" href="tel:+97699935918"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>' + t.p_call + '</span><b>9993 5918</b></a>' +
         '<ul class="pdp-trust"><li>' + t.p_eta_v + '</li><li>QPay</li></ul>' +
+        '<div class="pdp-sticky" id="pSticky"><span class="ps-price">' + money(p.price) + '</span><button type="button" class="btn ink" id="pBuy2"><span>' + t.p_order + '</span><span aria-hidden="true">→</span></button></div>' +
         fragBlock(t) +
         '<dl class="pdp-facts">' +
           row(t.p_origin, esc(p.brand) + (br ? ' · ' + esc(LV.lang === 'mn' ? br.city_mn : br.city_en) : '')) +
@@ -146,10 +148,10 @@
     if (z) { size = z.dataset.sz; document.querySelectorAll('[data-sz]').forEach(b => b.setAttribute('aria-pressed', String(b === z))); const er = $('#szErr'); if (er) er.hidden = true; return; }
     const g = e.target.closest('[data-g], [data-shot]');
     if (g) { show(g.dataset.shot != null ? +g.dataset.shot : shot + (g.dataset.g === 'next' ? 1 : -1)); return; }
-    const add = e.target.closest('#pAdd, #pBuy'); if (!add || !p) return;
+    const add = e.target.closest('#pAdd, #pBuy, #pBuy2'); if (!add || !p) return;
     if (p.sizes.length > 1 && !size) { const er = $('#szErr'); er.hidden = false; er.closest('fieldset').scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
     LV.bag.add(p.id, size);
-    if (add.id === 'pBuy') location.href = 'checkout.html';
+    if (add.id !== 'pAdd') location.href = 'checkout.html';
   });
   document.addEventListener('lv:lang', render);
   load();

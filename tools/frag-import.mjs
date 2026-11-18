@@ -27,8 +27,18 @@ const STORES = {
     base: 'https://creedfragrances.co.uk', priceFrom: 'https://creedboutique.com', brand: 'creed',
     keep: p => p.product_type === 'Fragrance' && !/sample|set|travel|discovery|gift/i.test(p.title),
     line: t => t.replace(/\s+/g, ' ').trim()
-  }
+  },
+  kayali: { base: 'https://kayali.com', brand: 'kayali', keep: p => p.product_type === 'Fragrances' && !SKIP.test(p.title), line: t => tc(t) },
+  'ellis-brooklyn': { base: 'https://ellisbrooklyn.com', brand: 'ellis-brooklyn', keep: p => /eau de parfum/i.test(p.product_type) && !SKIP.test(p.title), line: t => tc(t.replace(/\s*eau de parfum/i, '')) },
+  'juliette-has-a-gun': { base: 'https://juliettehasagun.com', brand: 'juliette-has-a-gun', keep: p => /^eau de parfum$/i.test(p.product_type) && !SKIP.test(p.title), line: t => tc(t) },
+  'vilhelm-parfumerie': { base: 'https://vilhelmparfumerie.com', brand: 'vilhelm-parfumerie', keep: p => p.product_type === 'Eau de Parfum' && !SKIP.test(p.title), line: t => tc(t) },
+  'imaginary-authors': { base: 'https://imaginaryauthors.com', brand: 'imaginary-authors', keep: p => p.product_type === 'Perfume' && !SKIP.test(p.title), line: t => tc(t.replace(/\s*-\s*fragrance$/i, '')) },
+  initio: { base: 'https://initioparfums.com', brand: 'initio', keep: p => !SKIP.test(p.title) && p.variants.some(v => +v.price >= 150), line: t => tc(t) },
+  'henry-rose': { base: 'https://henryrose.com', brand: 'henry-rose', keep: p => /eau de parfum/i.test(p.product_type) && !SKIP.test(p.title), line: t => tc(t) }
 };
+const SKIP = /set|kit|gift|trio|duo|discovery|sample|mini|travel|body|mist|oil|lotion|candle|coffret|refill|7[.,]5 ?ml|bundle/i;
+// SHOUTED shop titles (FLASHPOINT) to Title Case; mixed-case titles stay as written
+const tc = t => { t = t.replace(/\s+/g, ' ').trim(); return t === t.toUpperCase() ? t.toLowerCase().replace(/(^|[\s'’(-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase()) : t; };
 const ml = s => { const m = /([\d.]+)\s*ml/i.exec(s); if (m) return Math.round(+m[1]); const o = /([\d.]+)\s*fl\.?\s*oz/i.exec(s); return o ? ({ '1.0': 30, '1': 30, '1.7': 50, '2.5': 75, '3.4': 100, '4.2': 125, '6.8': 200 })[o[1]] || Math.round(+o[1] * 29.57) : 0; };
 const everyday = n => n >= 30 && n <= 200;
 // SHOP_CACHE=<dir> reads <dir>/<host>.json saved earlier instead of asking the store again (they rate-limit)

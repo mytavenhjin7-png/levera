@@ -73,7 +73,7 @@
         name, phone, address, district: form.elements.district.value, note: form.elements.note.value.trim(), ack: true, lang: LV.lang, gift_code: giftCode,
         items: items.map(x => ({ id: x.id, size: x.size, qty: x.q }))
       }) });
-      LV.bag.clear(); try { localStorage.removeItem(DRAFT); } catch (e2) {}
+      LV.bag.clear(); try { const d = JSON.parse(localStorage.getItem(DRAFT) || '{}'); delete d.note; localStorage.setItem(DRAFT, JSON.stringify(d)); } catch (e2) {}   // keep name, phone and address for the next order
       done(r);
     } catch (err) { showErr(err.status && err.status < 500 && err.message ? err.message : t.co_err_net); }
     finally { placing = false; submit.classList.remove('busy'); submit.disabled = !ack.checked; }

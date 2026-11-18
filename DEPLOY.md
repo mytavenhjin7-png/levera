@@ -10,7 +10,7 @@
 
 \* Railway дээр бүтээгдэхүүний зургууд (`uploads/`) кодтой хамт явна. Админаас шинээр зураг оруулбал дараагийн deploy-д арилна — шинэ зургаа `uploads/`-д нэмж GitHub руу push хийнэ.
 
-Анх асахад сервер хоосон мэдээллийн санд `data/levera-seed.sql`-ийг (35 брэнд, 1,206 идэвхтэй бараа — бүх зураг, үнэ, тохиргоо, сэтгэгдэл) **өөрөө ачаална** — гараар импорт хийх шаардлагагүй.
+Анх асахад сервер хоосон мэдээллийн санд `data/levera-seed.sql`-ийг (41 брэнд, 1,423 идэвхтэй бараа — бүх зураг, үнэ, тохиргоо, сэтгэгдэл) **өөрөө ачаална** — гараар импорт хийх шаардлагагүй.
 
 ---
 
@@ -50,7 +50,7 @@
    - `DB_DRIVER` = `mysql`
    - дээрх хүснэгтийн бусад хувьсагчид
 5. **Домэйн:** **Settings → Networking → Generate Domain** (түр хаяг), эсвэл **Custom Domain** → levera.mn нэмээд домэйн бүртгэгч дээрээ заасан CNAME бичлэгийг үүсгэнэ. HTTPS автоматаар.
-6. Deploy дуусахад **Logs** дээр `Loaded the shop from data/levera-seed.sql: 1206 products.` гарна.
+6. Deploy дуусахад **Logs** дээр `Loaded the shop from data/levera-seed.sql: 1423 products.` гарна.
 
 ## B. VPS (Ubuntu 22.04/24.04)
 
@@ -73,7 +73,7 @@
 5. Асаана:
    ```bash
    docker compose up -d --build
-   docker compose logs -f app      # "Loaded the shop ... 1206 products" гарна
+   docker compose logs -f app      # "Loaded the shop ... 1423 products" гарна
    ```
 6. HTTPS (Caddy — сертификатыг өөрөө авч сунгана):
    ```bash

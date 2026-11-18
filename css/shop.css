@@ -589,3 +589,15 @@ html.lb-on{overflow:hidden}
 .gc-card .acct-form label .mono{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .gc-card .acct-form input{height:44px;border:1px solid var(--line);border-radius:8px;padding:0 12px;font:inherit;width:100%}
 .gc-card .btn{justify-content:center;width:100%}
+/* easy ordering: call button and, on phones, a bar with the price and an order button that stays on screen */
+.pdp-call{display:flex;align-items:center;gap:10px;margin:14px 0 4px;padding:13px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);text-decoration:none;font-size:14px}
+.pdp-call b{margin-left:auto;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.pdp-call:hover{border-color:var(--ink)}
+.pdp-sticky{display:none}
+@media (max-width:760px){
+  .pdp-sticky{display:flex;align-items:center;gap:12px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(248,247,244,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .pdp-sticky .ps-price{font-family:var(--display);font-size:20px;font-variant-numeric:tabular-nums}
+  .pdp-sticky .btn{margin-left:auto;flex:1;justify-content:center;max-width:220px}
+  body:has(.pdp-sticky) .cc-launch{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  body:has(.pdp-sticky) footer{padding-bottom:80px}
+}
