@@ -1,0 +1,18 @@
+node_modules/
+# secrets — never commit
+server/.env
+.env
+data/admin-token.txt
+# local database files and tool reports (the shop itself ships as data/levera-seed.sql)
+data/*
+!data/levera-seed.sql
+.DS_Store
+server.log
+functions/.env
+functions/node_modules/
+functions/server/
+functions/data/
+firebase-debug.log
+.firebase/
+uploads/live/
+*.tmp.mjs

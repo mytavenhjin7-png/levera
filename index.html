@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LEVERA — Multi Brand Store</title>
+<meta name="description" content="LEVERA — Улаанбаатар дахь олон брэндийн онлайн бутик. Chanel, Dior, Louis Vuitton, Moncler, Nike ба бусад. QPay төлбөр, 7–14 хоногт хүргэлт.">
+<meta name="theme-color" content="#16171A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Archivo:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <nav class="nav-links" aria-label="Primary">
+    <a href="shop.html" data-i18n="nav_shop">Дэлгүүр</a>
+    <a href="#houses" data-i18n="nav_brands">Брэндүүд</a>
+    <a href="#track" data-i18n="nav_price">Бараагаа хянах</a>
+    <a href="shop.html?sale=1" data-i18n="nav_sale">Хямдрал</a>
+    <a href="reviews.html" data-i18n="nav_reviews">Сэтгэгдэл</a>
+  </nav>
+  <a href="#top" class="logo" aria-label="LEVERA home">LEVERA</a>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="l-mn" aria-pressed="true"><span>MN</span></button>
+      <button type="button" id="l-en" aria-pressed="false"><span>EN</span></button>
+    </div>
+    <button class="icon-btn" type="button" id="openSearch" aria-label="Search" aria-haspopup="dialog" aria-keyshortcuts="Control+K"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button>
+    <button class="icon-btn" type="button" id="openBag" aria-label="Bag" aria-haspopup="dialog"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span class="count" id="bagCount">0</span></button>
+  </div>
+</header>
+
+<main id="top">
+  <section id="hero" aria-label="LEVERA Multi Brand Store">
+    <div class="stage" id="stage">
+      <canvas id="gl" aria-hidden="true"></canvas>
+      <div class="shade"></div>
+
+
+      
+      <div class="corridor-k" aria-hidden="true"><span class="mono" data-i18n="corridor">Брэндүүд</span><span class="mono" data-i18n="corridor_sub">Гүйлгээд брэнд бүрийн дундуур нис</span></div>
+
+      <div class="hero-trust" aria-hidden="true">
+        <div>
+          <h2 data-i18n-html="trust_h">Authentic. Inspected.<br><em>Delivered.</em></h2>
+          <div class="chips">
+            <span class="chip"><i></i><span data-i18n="chip1">Бараа бүр шалгагдана</span></span>
+            <span class="chip"><i></i><span data-i18n="chip2">QPay төлбөр</span></span>
+            <span class="chip"><i></i><span data-i18n="chip3">7–14 хоногт хүргэнэ</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="hero-left">
+          <div class="hero-eyebrow mono"><span>LEVERA</span><span class="dot"></span><span>47.9184° N · 106.9177° E</span></div>
+          <h1 class="hero-title"><span>Multi</span><span>Brand</span><span><em>Store</em></span></h1>
+        </div>
+        <div class="hero-right">
+          <div class="hr-k mono"><span>AW — 2026</span><span>Ulaanbaatar</span></div>
+          <p class="hr-slogan" lang="en"><span class="w"><span style="--i:0">Wear</span></span> <span class="w"><span style="--i:1">your</span></span><br><span class="w"><em style="--i:2">confidence.</em></span></p>
+          <p class="hero-sub" data-i18n="hero_sub">Дэлхийн шилдэг брэндүүд нэг дор. Улаанбаатарт таны үүдэнд 7–14 хоногт.</p>
+          <div class="hr-actions">
+            <a class="btn light" href="shop.html"><span data-i18n="cta">Цуглуулга үзэх</span><span aria-hidden="true">→</span></a>
+            <div class="scroll-cue mono"><span data-i18n="scroll">Гүйлгэ</span><span class="bar"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-label="Brands"><div class="marquee-track" id="marquee"></div></div>
+
+  <section class="enough" id="enough" aria-labelledby="enH">
+    <h2 id="enH" class="sr-only">Everything you need</h2>
+    <div class="en-row" aria-hidden="true"><span>Everything</span><i></i><span class="o">you need</span><i></i><span><em>Everything</em></span><i></i><span class="o">you need</span><i></i><span>Everything</span><i></i><span class="o">you need</span><i></i><span><em>Everything</em></span><i></i><span class="o">you need</span><i></i></div>
+    <div class="wrap en-note mono" aria-hidden="true"><span>LEVERA — Multi Brand Store</span><span>Everything you need · One address</span></div>
+  </section>
+
+  <section class="block" id="edit">
+    <div class="wrap">
+      <div class="sec-head rv pre">
+        <div>
+          <div class="eyebrow" data-i18n="edit_k">Шинэ ирэлт</div>
+          <h2 data-i18n-html="edit_h">Энэ долоо хоногийн <em>сонголт</em></h2>
+          <p class="ed-stat"><b id="statCount">1,206</b> <span data-i18n="stat_line">бараа · 35 брэнд · хүргэлт багтсан үнэ</span></p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter" id="filters"></div>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div class="more-row"><a class="btn ink" id="editMore" href="shop.html"><span>Бүх барааг үзэх</span><span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section class="block" id="houses" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv pre">
+        <div>
+          <div class="eyebrow" data-i18n="houses_k">Брэндүүд</div>
+          <h2 data-i18n-html="houses_h">Нэг хаяг. <em>Дэлхийн</em> брэндүүд.</h2>
+        </div>
+        <p data-i18n="houses_p">Парис, Милан, Ванкувер, Портланд — бид шилдэг брэндүүдийг сонгож, Улаанбаатарт нэг дор авчирна.</p>
+      </div>
+      <div class="houses-wrap rv pre"><div class="houses" id="houseList"></div></div>
+    </div>
+  </section>
+
+  <section class="block trust" id="trust">
+    <div class="wrap">
+      <div class="sec-head rv pre">
+        <div>
+          <div class="eyebrow" data-i18n="trust_k">Яагаад LEVERA</div>
+          <h2 data-i18n-html="trust_h2">Итгэл бол <em>хамгийн үнэтэй</em> бүтээгдэхүүн.</h2>
+        </div>
+        <p data-i18n="trust_p">Онлайнаар люкс бараа авахад эргэлзээ төрөх нь ойлгомжтой. Тиймээс бид алхам бүрийг ил тод болгосон.</p>
+      </div>
+      <div class="pillars rv pre">
+        <div class="pillar">
+          <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M17 3l11 4v9c0 7-5 12-11 15C11 28 6 23 6 16V7z"/><path d="M12 17l4 4 7-8"/></svg>
+          <h3 data-i18n="p1_h">Жинхэнэ эсэхийг шалгана</h3><p data-i18n="p1_p"></p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="5" y="5" width="9" height="9"/><rect x="20" y="5" width="9" height="9"/><rect x="5" y="20" width="9" height="9"/><path d="M20 20h4v4h-4zM26 26h3v3h-3zM20 27h2"/></svg>
+          <h3 data-i18n="p2_h">QPay-ээр аюулгүй төлнө</h3><p data-i18n="p2_p"></p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M3 22h20V9H3zM23 14h5l3 4v4h-8"/><circle cx="9" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg>
+          <h3 data-i18n="p3_h">7–14 хоногт хүргэнэ</h3><p data-i18n="p3_p"></p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M6 10h22v18H6z"/><path d="M11 10V7a6 6 0 0 1 12 0v3"/><path d="M12 19h10"/></svg>
+          <h3 data-i18n="p4_h">Нэг үнэ, бүгд багтсан</h3><p data-i18n="p4_p"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block how" id="how">
+    <div class="wrap">
+      <div class="sec-head rv pre">
+        <div>
+          <div class="eyebrow" data-i18n="how_k">Хүргэлт</div>
+          <h2 data-i18n-html="how_h">Үүдэнд тань <em>хүргэнэ.</em></h2>
+        </div>
+        <p data-i18n="how_p"></p>
+      </div>
+      <div class="how-grid rv pre">
+        <ol class="how-steps">
+          <li><span class="n mono">01</span><h3 data-i18n="how1_h">Захиалах ба төлөх</h3><p data-i18n="how1_p"></p></li>
+          <li><span class="n mono">02</span><h3 data-i18n="how2_h">Шалгалт ба савлагаа</h3><p data-i18n="how2_p"></p></li>
+          <li><span class="n mono">03</span><h3 data-i18n="how3_h">Үүдэнд хүргэлт</h3><p data-i18n="how3_p"></p></li>
+        </ol>
+        <div class="how-ex dlv">
+          <div class="dlv-top">
+            <span class="dlv-mark" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></span>
+            <div><div class="mono dlv-k" data-i18n="dlv_k">Хүргэлтийн түнш</div><div class="dlv-name">LEVERA</div></div>
+          </div>
+          <div class="dlv-time"><b data-i18n="dlv_days">7–14</b><span data-i18n="dlv_days_l">хоногт таны үүдэнд</span></div>
+          <dl class="dlv-list">
+            <div><dt data-i18n="dlv_fee">Хүргэлтийн төлбөр</dt><dd data-i18n="dlv_fee_v">Үнэд багтсан</dd></div>
+            <div><dt data-i18n="dlv_area">Хамрах хүрээ</dt><dd data-i18n="dlv_area_v">Улаанбаатар хот</dd></div>
+            <div><dt data-i18n="dlv_pay">Төлбөр</dt><dd data-i18n="dlv_pay_v">QPay · бүх банкны апп</dd></div>
+            <div><dt data-i18n="dlv_track">Захиалга хянах</dt><dd class="mono">LV-26-0000</dd></div>
+          </dl>
+          <div class="dlv-cta"><a class="btn ink" href="shop.html"><span data-i18n="cta">Цуглуулга үзэх</span><span aria-hidden="true">→</span></a><a class="btn" href="#track"><span data-i18n="dlv_track_cta">Захиалга хянах</span><span aria-hidden="true">→</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap editorial rv pre">
+      <h2 data-i18n-html="ed_h">Улаанбаатарт бүтээв. <em>Дэлхийд</em> зориулав.</h2>
+      <div class="side">
+        <p data-i18n="ed_p"></p>
+        <div class="banks"><span class="chip"><i></i>QPay</span><span class="chip">Khan Bank</span><span class="chip">Golomt</span><span class="chip">TDB</span><span class="chip">State Bank</span><span class="chip">XacBank</span></div>
+        <div><a class="btn ink" href="shop.html"><span data-i18n="cta2">Худалдан авалт эхлэх</span><span aria-hidden="true">→</span></a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer">
+  <div class="f-glow" aria-hidden="true"></div>
+  <div class="wrap">
+
+    <div class="f-head">
+      <div>
+        <div class="f-eyebrow">LEVERA AI</div>
+        <h2 class="f-title" data-i18n-html="f_h">Дэлхийн брэндүүд.<br><em>Нэг хаяг.</em></h2>
+      </div>
+      <div class="f-head-side">
+        <p data-i18n="f_p">LEVERA бол олон брэндийн онлайн бутик. Захиалга, хүргэлт, төлбөрийн бүх асуултад манай баг хариулна.</p>
+        <a class="f-cta" href="shop.html"><span data-i18n="cta">Цуглуулга үзэх</span><span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="f-panels">
+      <section class="f-panel" aria-labelledby="nlH">
+        <div class="f-eyebrow" data-i18n="nl_k">Drop-ын мэдээ</div>
+        <h3 id="nlH" data-i18n="nl_h">Дараагийн drop-ыг хамгийн түрүүнд</h3>
+        <form id="news">
+          <fieldset class="f-ints">
+            <legend class="f-label" data-i18n="nl_pick">Сонирхол</legend>
+            <button type="button" class="f-chip" data-int="fragrance" aria-pressed="true"><span data-i18n="f_fragrance">Сүрчиг</span></button>
+            <button type="button" class="f-chip" data-int="footwear" aria-pressed="true"><span data-i18n="f_footwear">Гутал</span></button>
+            <button type="button" class="f-chip" data-int="apparel" aria-pressed="false"><span data-i18n="f_apparel">Хувцас</span></button>
+            <button type="button" class="f-chip" data-int="bags" aria-pressed="false"><span data-i18n="f_bags">Цүнх</span></button>
+            <button type="button" class="f-chip" data-int="accessories" aria-pressed="false"><span data-i18n="f_accessories">Дагалдах</span></button>
+          </fieldset>
+          <label class="f-label" for="email" data-i18n="email">Имэйл хаяг</label>
+          <div class="f-field">
+            <input id="email" type="email" required autocomplete="email" placeholder="name@example.com">
+            <button type="submit" class="f-go"><span data-i18n="join">Бүртгүүлэх</span><svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4"/></svg></button>
+          </div>
+          <p class="f-fine" data-i18n="news_fine">Сард хоёроос илүүгүй захидал. Хүссэн үедээ цуцална.</p>
+          <p class="f-ok" id="newsOk" role="status" hidden></p>
+        </form>
+      </section>
+
+      <section class="f-panel" id="track" aria-labelledby="trH">
+        <div class="f-eyebrow" data-i18n="tr_k">Захиалга хянах</div>
+        <h3 id="trH" data-i18n="tr_h">Захиалга маань хаана явна?</h3>
+        <form id="trackForm">
+          <label class="f-label" for="orderNo" data-i18n="tr_label">Захиалгын дугаар</label>
+          <div class="f-field">
+            <input id="orderNo" type="text" autocomplete="off" spellcheck="false" placeholder="LV-26-0000" aria-describedby="trErr trNote">
+            <button type="submit" class="f-go"><span data-i18n="tr_btn">Хянах</span><svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 5h15M11 1l4 4-4 4"/></svg></button>
+          </div>
+          <p class="f-err" id="trErr" role="alert" hidden></p>
+        </form>
+        <ol class="f-steps" id="trSteps" aria-live="polite"></ol>
+        <p class="f-fine" id="trNote" data-i18n="tr_demo">Захиалгын дугаараа оруулбал бодит төлөв харагдана.</p>
+      </section>
+
+      <section class="f-panel" id="concierge" aria-labelledby="cgH">
+        <div class="f-eyebrow" data-i18n="cg_k">Үйлчилгээ</div>
+        <h3 id="cgH" data-i18n="cg_h">Бидэнтэй холбогдох</h3>
+        <div class="f-clock">
+          <span class="f-label" data-i18n="cg_time">Улаанбаатарын цаг</span>
+          <span class="f-time" id="ubTime">--:--</span>
+          <span class="f-status" id="ubStatus"><i></i><span></span></span>
+        </div>
+        <dl class="f-contact">
+          <div><dt data-i18n="v_store">Шоурум</dt><dd><span data-i18n="v_store_v">Улаанбаатар хот</span></dd></div>
+          <div><dt data-i18n="ph">Утас</dt><dd class="multi"><span class="ln"><span>9993 5918</span><button type="button" class="f-copy" data-copy="99935918" data-i18n="copy">Хуулах</button></span><span class="ln"><span>9022 060</span><button type="button" class="f-copy" data-copy="9022060" data-i18n="copy">Хуулах</button></span></dd></div>
+          <div><dt data-i18n="em">Имэйл</dt><dd><span>leverastore6@gmail.com</span><button type="button" class="f-copy" data-copy="leverastore6@gmail.com" data-i18n="copy">Хуулах</button></dd></div>
+          <div><dt data-i18n="v_hours">Цагийн хуваарь</dt><dd><span data-i18n="v_hours_v">Даваа–Ням, 10:00–20:00</span></dd></div>
+        </dl>
+      </section>
+    </div>
+
+    <section class="f-policy" id="policy" aria-labelledby="polH">
+      <div class="f-eyebrow" data-i18n="pol_k">Буцаалтын бодлого</div>
+      <div class="f-policy-grid">
+        <h3 id="polH" data-i18n-html="pol_h">Бүх худалдан авалт <em>эцсийн.</em></h3>
+        <div>
+          <p data-i18n="pol_p"></p>
+          <a class="f-cta" href="#concierge"><span data-i18n="pol_cta">Захиалахаас өмнө зөвлөгөө авах</span><span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="f-cols">
+      <details class="f-col" open>
+        <summary data-i18n="fn_shop">Дэлгүүр</summary>
+        <ul>
+          <li><a href="shop.html?cat=apparel" data-i18n="f_apparel">Хувцас</a></li>
+          <li><a href="shop.html?cat=footwear" data-i18n="f_footwear">Гутал</a></li>
+          <li><a href="shop.html?cat=bags" data-i18n="f_bags">Цүнх</a></li>
+          <li><a href="shop.html?cat=accessories" data-i18n="f_accessories">Дагалдах</a></li>
+          <li><a href="shop.html?cat=fragrance" data-i18n="f_fragrance">Сүрчиг</a></li>
+          <li><a href="scent.html" data-i18n="sq_link">Үнэрийн тест</a></li>
+        </ul>
+      </details>
+      <details class="f-col brands" open>
+        <summary data-i18n="nav_brands">Брэндүүд</summary>
+        <ul id="fBrands">
+</ul>
+      </details>
+      <details class="f-col" open>
+        <summary data-i18n="help">Тусламж</summary>
+        <ul>
+          <li><a href="#how" data-i18n="f1">Хүргэлт</a></li>
+          <li><a href="#track" data-i18n="f3">Захиалга хянах</a></li>
+          <li><a href="gift.html" data-i18n="gc_k">Бэлгийн карт</a></li>
+          <li><a href="#policy" data-i18n="f2">Буцаалтын бодлого</a></li>
+          <li><a href="#trust" data-i18n="f8">Хэмжээний заавар</a></li>
+          <li><a href="#trust" data-i18n="f5">Жинхэнэ эсэхийн баталгаа</a></li>
+        </ul>
+      </details>
+      <details class="f-col" open>
+        <summary>LEVERA</summary>
+        <ul>
+          <li><a href="#trust" data-i18n="nav_about">Бидний тухай</a></li>
+          <li><a href="#concierge" data-i18n="f4">Холбоо барих</a></li>
+          <li><a href="#top" data-i18n="f6">Нууцлалын бодлого</a></li>
+          <li><a href="#top" data-i18n="f7">Үйлчилгээний нөхцөл</a></li>
+        </ul>
+      </details>
+      <details class="f-col" open>
+        <summary data-i18n="social">Сошиал</summary>
+        <ul>
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram <span class="ext" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok <span class="ext" aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook <span class="ext" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="f-mark" id="fMark" aria-hidden="true">
+      <svg viewBox="0 0 1000 168">
+        <text x="500" y="150" text-anchor="middle" textLength="992" lengthAdjust="spacing" font-family="Bodoni Moda, Georgia, serif" font-size="190" fill="#EDE8DE" fill-opacity=".035" stroke="#C8A86B" stroke-opacity=".32" stroke-width=".7">LEVERA</text>
+      </svg>
+      <svg class="f-mark-lit" viewBox="0 0 1000 168">
+        <defs>
+          <linearGradient id="fGold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F1DDB0"/><stop offset=".55" stop-color="#C8A86B"/><stop offset="1" stop-color="#8E7240"/>
+          </linearGradient>
+        </defs>
+        <text x="500" y="150" text-anchor="middle" textLength="992" lengthAdjust="spacing" font-family="Bodoni Moda, Georgia, serif" font-size="190" fill="url(#fGold)">LEVERA</text>
+      </svg>
+    </div>
+
+    <div class="f-bar">
+      <div class="f-pay">
+        <span class="f-label" data-i18n="pay">Төлбөр</span>
+        <span class="f-chip static"><i></i>QPay</span>
+        <span class="f-chip static">Khan Bank</span><span class="f-chip static">Golomt</span><span class="f-chip static">TDB</span><span class="f-chip static">State Bank</span><span class="f-chip static">XacBank</span>
+      </div>
+      <div class="f-tools">
+        <div class="f-lang" role="group" aria-label="Language">
+          <button type="button" data-lang="mn" aria-pressed="true">Монгол</button>
+          <button type="button" data-lang="en" aria-pressed="false">English</button>
+        </div>
+        <button type="button" class="f-top" id="toTop" aria-label="Back to top">
+          <svg class="ring" width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle class="track" cx="26" cy="26" r="24" stroke-width="1"/><circle class="prog" cx="26" cy="26" r="24" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M6 13V1M1 6l5-5 5 5"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="f-legal">
+      <span>© 2026 LEVERA · <span data-i18n="made">Улаанбаатарт бүтээв</span></span>
+      <nav aria-label="Legal">
+        <a href="#top" data-i18n="f6">Нууцлалын бодлого</a>
+        <a href="#top" data-i18n="f7">Үйлчилгээний нөхцөл</a>
+        <a href="#top" data-i18n="f10">Күүки</a>
+      </nav>
+      <span>47.9184° N · 106.9177° E</span>
+    </div>
+    <details class="f-credits">
+      <summary class="mono">3D credits</summary>
+      <p>Some product images are rendered from “Materials Variants Shoe” © Shopify and “Sunglasses Khronos” by Eric Chadwick © Darmstadt Graphics Group, from the <a href="https://github.com/KhronosGroup/glTF-Sample-Assets" target="_blank" rel="noopener">Khronos glTF Sample Assets</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>; logos removed. Studio lighting: Poly Haven (CC0). All product images are illustrative.</p>
+    </details>
+  </div>
+</footer>
+
+<button type="button" class="cc-launch" id="ccOpen" aria-controls="cc" aria-expanded="false" aria-label="Ask LEVERA AI"><span class="cc-av" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1.2"/><circle cx="9" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><path d="M2 12.5v2.5M22 12.5v2.5"/></svg></span><span class="lbl">Ask</span></button>
+<section class="cc" id="cc" role="dialog" aria-labelledby="ccTitle" aria-hidden="true">
+  <div class="cc-head">
+    <span class="cc-av" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="3.5"/><path d="M12 8V5"/><circle cx="12" cy="4" r="1.2"/><circle cx="9" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><path d="M2 12.5v2.5M22 12.5v2.5"/></svg></span>
+    <div><h2 id="ccTitle">LEVERA AI</h2><span class="st" data-i18n="cc_status">AI туслах · Онлайн</span></div>
+    <button type="button" class="cc-x" id="ccClose" aria-label="Close"><svg width="12" height="12" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"/></svg></button>
+  </div>
+  <div class="cc-log" id="ccLog" aria-live="polite"></div>
+  <div class="cc-sugs" id="ccSugs"></div>
+  <form class="cc-form" id="ccForm">
+    <label for="ccIn" class="sr-only" data-i18n="cc_ph">Асуултаа бичнэ үү…</label>
+    <input id="ccIn" type="text" autocomplete="off" data-i18n-ph="cc_ph" placeholder="Асуултаа бичнэ үү…">
+    <button type="submit" class="cc-send" id="ccSend" aria-label="Send"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+  </form>
+  <p class="cc-note" data-i18n="cc_note">AI туслах алдаа гаргаж болно. Яаралтай бол 9993 5918.</p>
+</section>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/store.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/account.js"></script>
+<script src="js/main.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/motion.js"></script>
+
+<script src="js/chat.js"></script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/"
+} }
+</script>
+
+<script>
+/* the 3D hero is heavy (three.js + a texture per brand name): only on a capable desktop, and only once the page
+   has loaded and the browser is idle. Everywhere else the same square photo shows as a still (CSS background). */
+(function () {
+  var big = matchMedia('(min-width: 900px) and (hover: hover)').matches;
+  var cores = navigator.hardwareConcurrency || 4, mem = navigator.deviceMemory || 8;
+  var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save = navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType || ''));
+  if (!big || cores < 6 || mem < 4 || calm || save) return;
+  var go = function () { var s = document.createElement('script'); s.type = 'module'; s.src = 'js/hero3d.js'; document.body.appendChild(s); };
+  var idle = window.requestIdleCallback || function (f) { setTimeout(f, 1200); };
+  if (document.readyState === 'complete') idle(go, { timeout: 3000 }); else addEventListener('load', function () { idle(go, { timeout: 3000 }); });
+})();
+</script>
+</body>
+</html>

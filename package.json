@@ -1,0 +1,33 @@
+{
+  "name": "levera",
+  "version": "3.0.0",
+  "private": true,
+  "description": "LEVERA — multi-brand store: website, API, MySQL/SQLite database, cargo pricing, QPay, reviews, Gemini concierge, admin",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "start": "node --no-warnings server/index.mjs",
+    "dev": "node --no-warnings --watch server/index.mjs",
+    "seed": "node --no-warnings --input-type=module -e \"const m = await import('./server/db.mjs'); console.log(await m.seed({ force: true })); process.exit(0)\"",
+    "render": "node --no-warnings tools/product-renders/render-catalog.mjs",
+    "test": "node tools/e2e-test.mjs",
+    "photos": "node --no-warnings tools/fetch-photos.mjs",
+    "reviews:samples": "node --no-warnings tools/sample-reviews.mjs",
+    "reviews:clear-samples": "node --no-warnings tools/sample-reviews.mjs --clear",
+    "photos:top-up": "node --no-warnings tools/top-up-photos.mjs",
+    "photos:audit": "node --no-warnings tools/audit-photos.mjs",
+    "photos:all": "node --no-warnings tools/photos-all.mjs",
+    "db:export": "node --no-warnings tools/export-db.mjs",
+    "deploy": "firebase deploy --project levera-mn",
+    "deploy:site": "firebase deploy --only hosting --project levera-mn",
+    "deploy:server": "firebase deploy --only functions --project levera-mn"
+  },
+  "devDependencies": {
+    "playwright": "1.49.1",
+    "sharp": "^0.33.5"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.5"
+  }
+}

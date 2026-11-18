@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json", ".firebaserc", "**/.*", "**/node_modules/**", "functions/**", "server/**", "tools/**", "data/**",
+      "deploy/**", "uploads/live/**", "*.md", "Dockerfile", "docker-compose.yml", "package.json", "package-lock.json"
+    ],
+    "rewrites": [
+      { "source": "/api/**", "function": { "functionId": "app", "region": "asia-northeast1" } },
+      { "source": "/sitemap.xml", "function": { "functionId": "app", "region": "asia-northeast1" } },
+      { "source": "/uploads/live/**", "function": { "functionId": "app", "region": "asia-northeast1" } }
+    ],
+    "headers": [
+      { "source": "/uploads/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] },
+      { "source": "/assets/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] },
+      { "source": "**/*.@(js|css)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] },
+      { "source": "**/*.html", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }
+    ]
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs22",
+    "predeploy": ["node tools/build-functions.mjs"],
+    "ignore": ["node_modules", ".git", "*.local", ".env.example"]
+  }
+}
