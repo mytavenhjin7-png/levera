@@ -96,8 +96,8 @@ if (mode === 'commit') {
   for (const d of readdirSync(outDir)) {
     const dir = join(outDir, d); if (!existsSync(join(dir, 'meta.json')) || skip.has(d)) continue;
     const meta = JSON.parse(readFileSync(join(dir, 'meta.json'), 'utf8')), files = readdirSync(dir).filter(f => f.endsWith('.webp')).sort();
-    const pick = picks[d] || [1, 2, 3, 4, 5];   // reviewed choice of 5 among the candidates
-    if (pick.length < 5 || pick.some(k => !files.includes(k + '.webp'))) continue;
+    const pick = (picks[d] || [1, 2, 3, 4, 5]).filter(k => files.includes(k + '.webp'));   // reviewed choice among the candidates (perfume: 2–5 distinct photos)
+    if (pick.length < 2) continue;
     for (const v of meta.sizes.filter(v => [30, 50, 75, 100, 125, 200].includes(v.ml))) {
       const name = meta.line + ', ' + v.ml + ' ml';
       if (await dbm.db.get('SELECT 1 FROM products WHERE brand_slug=? AND name_en=?', [S.brand, name])) continue;

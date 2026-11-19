@@ -13,7 +13,10 @@
     if (p.sizes.length === 1) size = p.sizes[0];
     render();
     // the full gallery isn't in the shop-wide catalogue: fetch this piece's record (it carries the review summary too)
-    try { const r = await LV.api('/api/products/' + encodeURIComponent(id)); if (r.product && r.product.imgs) p.imgs = r.product.imgs; if (r.reviews) rating = r.reviews; render(); } catch (e) {}
+    try { const r = await LV.api('/api/products/' + encodeURIComponent(id)); if (r.product && r.product.imgs) p.imgs = r.product.imgs; if (r.reviews) rating = r.reviews; render(); }
+    catch (e) {   // static hosting without the server: the galleries are published as assets/gallery.json
+      try { const g = await (await fetch('assets/gallery.json')).json(); if (g[id]) { p.imgs = g[id]; render(); } } catch (e2) {}
+    }
   }
 
   // "Love Bracelet, Classic — White Gold" → model + colourway, so the name reads on two clean lines
