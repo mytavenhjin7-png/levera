@@ -1,6 +1,6 @@
 /* LEVERA — texts for the shop, product, checkout and order-tracking pages (MN/EN). Loaded after data.js. */
 Object.assign(window.LV.t.mn, {
-  nav_shop:'Дэлгүүр', nav_price:'Үнэ ба карго', shop_k:'Дэлгүүр', shop_h:'Бүх <em>бараа</em>', shop_p:'60+ брэнд, 1,600+ бараа. Үнэ бүрт барааны үнэ, карго, хүргэлт багтсан.',
+  nav_shop:'Дэлгүүр', nav_price:'Үнэ ба карго', shop_k:'Дэлгүүр', shop_h:'Бүх <em>бараа</em>', shop_p:'70+ брэнд, 2,100+ бараа. Үнэ бүрт барааны үнэ, карго, хүргэлт багтсан.',
   all_brands:'Бүх брэнд', f_brand:'Брэнд', f_cat:'Ангилал', f_type:'Төрөл', f_price:'Үнэ', f_search:'Дэлгүүрээс хайх…', filters:'Шүүлтүүр', clear:'Цэвэрлэх', apply:'Харуулах',
   sort:'Эрэмбэлэх', sort_feat:'Онцлох', sort_low:'Үнэ: багаас их', sort_high:'Үнэ: ихээс бага', sort_name:'Нэрээр (A–Z)',
   results:'{n} бараа', load_more:'Цааш үзэх', showing:'{a} / {b}', view_all:'Бүх {n} барааг үзэх', brand_n:'{n} бараа', price_any:'Бүх үнэ',
@@ -26,10 +26,10 @@ Object.assign(window.LV.t.mn, {
   how2_h:'Карго хүргэлт', how2_p:'Эрээн → Улаанбаатар. Жин эсвэл оврын аль өндөр дүнгээр тооцно.',
   how3_h:'LEVERA үйлчилгээ', how3_p:'Захиалга, шалгалт, савлагаа, хүргэлт. Төлбөр төлөх үед нэмэлт зардал гарахгүй.',
   how_live:'Өнөөдрийн тариф', how_ex:'Жишээ', how_sum:'Нийт',
-  houses_p:'60+ брэнд, 1,600+ бараа. Брэнд дээр дарж бүх барааг үзээрэй.', stat_line:'бараа · 60+ брэнд · карго багтсан үнэ'
+  houses_p:'70+ брэнд, 2,100+ бараа. Брэнд дээр дарж бүх барааг үзээрэй.', stat_line:'бараа · 70+ брэнд · карго багтсан үнэ'
 });
 Object.assign(window.LV.t.en, {
-  nav_shop:'Shop', nav_price:'Pricing', shop_k:'The shop', shop_h:'Every <em>piece</em>', shop_p:'60+ houses, 1,600+ pieces. Every price includes the item price, cargo and delivery.',
+  nav_shop:'Shop', nav_price:'Pricing', shop_k:'The shop', shop_h:'Every <em>piece</em>', shop_p:'70+ houses, 2,100+ pieces. Every price includes the item price, cargo and delivery.',
   all_brands:'All brands', f_brand:'Brand', f_cat:'Category', f_type:'Type', f_price:'Price', f_search:'Search the shop…', filters:'Filters', clear:'Clear', apply:'Show',
   sort:'Sort', sort_feat:'Featured', sort_low:'Price: low to high', sort_high:'Price: high to low', sort_name:'Name (A–Z)',
   results:'{n} pieces', load_more:'Load more', showing:'{a} of {b}', view_all:'View all {n} pieces', brand_n:'{n} pieces', price_any:'Any price',
@@ -55,7 +55,7 @@ Object.assign(window.LV.t.en, {
   how2_h:'Cargo delivery', how2_p:'Ereen → Ulaanbaatar. Charged by weight or volume, whichever is higher.',
   how3_h:'LEVERA service', how3_p:'Ordering, inspection, packing and delivery. Nothing added at checkout.',
   how_live:'Today’s rates', how_ex:'Example', how_sum:'Total',
-  houses_p:'60+ houses, 1,600+ pieces. Pick a house to see everything.', stat_line:'pieces · 60+ houses · cargo-inclusive prices'
+  houses_p:'70+ houses, 2,100+ pieces. Pick a house to see everything.', stat_line:'pieces · 70+ houses · cargo-inclusive prices'
 });
 
 /* product page details + customer reviews */
@@ -90,8 +90,8 @@ Object.assign(window.LV.t.en, {
 
 /* delivery wording (replaces the earlier cargo wording everywhere customers see it) */
 Object.assign(window.LV.t.mn, {
-  nav_price:'Бараагаа хянах', f1:'Хүргэлт', incl:'Хүргэлт багтсан', stat_line:'бараа · 60+ брэнд · хүргэлт багтсан үнэ',
-  shop_p:'60+ брэнд, 1,600+ бараа. Үнэ бүрт хүргэлт багтсан.',
+  nav_price:'Бараагаа хянах', f1:'Хүргэлт', incl:'Хүргэлт багтсан', stat_line:'бараа · 70+ брэнд · хүргэлт багтсан үнэ',
+  shop_p:'70+ брэнд, 2,100+ бараа. Үнэ бүрт хүргэлт багтсан.',
   p4_p:'Хүргэлтийн зардал үнэд аль хэдийн орсон. Төлбөр төлөх үед гэнэтийн нэмэлт гарахгүй.',
   b_note:'Хүргэлт үнэд багтсан · 7–14 хоногт хүргэнэ', p_incl:'Хүргэлт багтсан', p_incl_frag:'Гаалийн татвар, НӨАТ, хүргэлт багтсан', co_delivery:'Хүргэлт', co_included:'Үнэд багтсан',
   st_ereen:'Агуулахад ирсэн', st_ub:'Хүргэлтэд гарсан',
@@ -105,8 +105,8 @@ Object.assign(window.LV.t.mn, {
   p_gallery:'Зураг {i} / {n}', p_prev:'Өмнөх зураг', p_next:'Дараагийн зураг'
 });
 Object.assign(window.LV.t.en, {
-  nav_price:'Track order', f1:'Delivery', incl:'Delivery included', stat_line:'pieces · 60+ houses · delivery included',
-  shop_p:'60+ houses, 1,600+ pieces. Every price includes delivery.',
+  nav_price:'Track order', f1:'Delivery', incl:'Delivery included', stat_line:'pieces · 70+ houses · delivery included',
+  shop_p:'70+ houses, 2,100+ pieces. Every price includes delivery.',
   p4_p:'Delivery is already in the price. No surprises at checkout.',
   b_note:'Delivery included · arrives in 7–14 days', p_incl:'Delivery included', p_incl_frag:'Customs duty, VAT and delivery included', co_delivery:'Delivery', co_included:'Included',
   st_ereen:'At our warehouse', st_ub:'Out for delivery',
@@ -122,7 +122,7 @@ Object.assign(window.LV.t.en, {
 
 /* reviews page */
 Object.assign(window.LV.t.mn, {
-  houses_p:'60+ брэнд — Nike-ийн KD, LeBron, Kobe цувралаас эхлээд Moncler, Arc’teryx хүртэл. Брэнд дээр дарж бүх барааг үзээрэй.',
+  houses_p:'70+ брэнд — Nike-ийн KD, LeBron, Kobe цувралаас эхлээд Moncler, Arc’teryx хүртэл. Брэнд дээр дарж бүх барааг үзээрэй.',
   nav_reviews:'Сэтгэгдэл', rv_be_first:'Сэтгэгдэл алга', rv_see:'Сэтгэгдэл үзэх', rv_all:'Бүх сэтгэгдэл', rv_any:'Бүгд',
   rv_none_all:'Баталгаат сэтгэгдэл одоогоор цөөн байна. Худалдан авалт хийсэн бол анхны сэтгэгдлээ үлдээгээрэй.',
   rv_none_filter:'Энэ шүүлтүүрт тохирох сэтгэгдэл алга.', rv_offline:'Сэтгэгдлийг ачаалж чадсангүй. Серверийг (npm start) асаасан эсэхийг шалгана уу.',
@@ -130,7 +130,7 @@ Object.assign(window.LV.t.mn, {
   rv_piece:'Бараа', rv_find:'Барааны нэрээр хайх…', rv_change:'Солих', rv_err_piece:'Аль бараанд сэтгэгдэл бичихээ сонгоно уу.'
 });
 Object.assign(window.LV.t.en, {
-  houses_p:'60+ houses — from Nike’s KD, LeBron and Kobe lines to Moncler and Arc’teryx. Pick a house to see everything.',
+  houses_p:'70+ houses — from Nike’s KD, LeBron and Kobe lines to Moncler and Arc’teryx. Pick a house to see everything.',
   nav_reviews:'Reviews', rv_be_first:'No reviews yet', rv_see:'See reviews', rv_all:'All reviews', rv_any:'All',
   rv_none_all:'There are only a few verified reviews so far. Bought something? Be one of the first to review it.',
   rv_none_filter:'No reviews match this filter.', rv_offline:'Couldn’t load reviews. Check that the server (npm start) is running.',
