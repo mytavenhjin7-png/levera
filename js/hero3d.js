@@ -179,4 +179,13 @@ function frame(now) {
 
 (document.fonts && document.fonts.load ? Promise.all([
   document.fonts.load('400 120px "Bodoni Moda"'), document.fonts.load('600 120px "Cinzel"'), document.fonts.load('500 40px "JetBrains Mono"')
-]).catch(() => {}) : Promise.resolve()).then(() => { buildCorridor(); requestAnimationFrame(frame); });
+]).catch(() => {}) : Promise.resolve()).then(async () => { await useShopBrands(); buildCorridor(); requestAnimationFrame(frame); });
+// every brand that has pieces in the shop flies past, the hand-picked houses first
+async function useShopBrands() {
+  try {
+    await LV.ready; const list = (LV.brands || []).filter(b => b.count > 0); if (!list.length) return;
+    const first = LV.corridor.map(c => c.name.toLowerCase());
+    list.sort((a, b) => ((first.indexOf(a.name.toLowerCase()) + 1 || 999) - (first.indexOf(b.name.toLowerCase()) + 1 || 999)) || b.count - a.count);
+    LV.corridor = list.map(b => ({ name: b.name, en: (b.city_en || '') + ' · ' + b.count + (b.count === 1 ? ' piece' : ' pieces'), mn: (b.city_mn || '') + ' · ' + b.count + ' бараа' }));
+  } catch (e) {}
+}
