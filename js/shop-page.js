@@ -104,10 +104,14 @@
     if (st.sale) chips.push(['sale', t.sale_k]);
     $('#active').innerHTML = chips.map(([k, l]) => '<button type="button" class="chip-x" data-clear="' + k + '">' + esc(l) + '<span aria-hidden="true">×</span></button>').join('');
   }
-  function renderGrid() {
-    const t = T(), list = results();
+  let drawn = 0, lastList = null;
+  function renderGrid(append) {
+    const t = T(), list = append && lastList ? lastList : results(); lastList = list;
     $('#count').textContent = fill(t.results, { n: list.length.toLocaleString('en-US') });
-    $('#grid').innerHTML = list.slice(0, st.shown).map(LV.card).join('');
+    // "more" adds the next page under what is already there instead of redrawing the whole grid
+    if (append && drawn) $('#grid').insertAdjacentHTML('beforeend', list.slice(drawn, st.shown).map(LV.card).join(''));
+    else $('#grid').innerHTML = list.slice(0, st.shown).map(LV.card).join('');
+    drawn = Math.min(st.shown, list.length);
     $('#empty').hidden = !!list.length; $('#empty').textContent = t.s_none;
     $('#more').hidden = list.length <= st.shown;
     $('#showing').textContent = list.length ? fill(t.showing, { a: Math.min(st.shown, list.length), b: list.length.toLocaleString('en-US') }) : '';
@@ -135,7 +139,9 @@
   $('#side').addEventListener('input', e => { const i = e.target; if (!i.closest || !i.closest('#prRange')) return; const n = num(i.value); i.value = n ? n.toLocaleString('en-US') : ''; });
   let qt = 0; $('#fq').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => set('q', e.target.value.trim()), 180); });
   $('#sort').addEventListener('change', e => set('sort', e.target.value));
-  $('#more').addEventListener('click', () => { st.shown += PAGE; renderGrid(); });
+  $('#more').addEventListener('click', () => { st.shown += PAGE; renderGrid(true); });
+  // keep filling the page as the shopper scrolls near the end
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => { if (es.some(e => e.isIntersecting) && !$('#more').hidden) { st.shown += PAGE; renderGrid(true); } }, { rootMargin: '900px 0px' }).observe($('#more'));
   $('#active').addEventListener('click', e => { const b = e.target.closest('[data-clear]'); if (!b) return; if (b.dataset.clear === 'q') $('#fq').value = ''; set(b.dataset.clear, ''); });
   $('#clearAll').addEventListener('click', () => { Object.assign(st, { brand: '', cat: '', type: '', price: '', min: 0, max: 0, sale: '', q: '', shown: PAGE }); $('#fq').value = ''; render(); });
   $('#rail').addEventListener('click', e => { const a = e.target.closest('[data-brand]'); if (!a) return; e.preventDefault(); set('brand', a.dataset.brand); scrollTo({ top: 0, behavior: 'smooth' }); });
