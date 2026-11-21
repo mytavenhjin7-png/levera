@@ -86,6 +86,7 @@
   }
   function renderDone() {
     if (!order) return;
+    try { const l = JSON.parse(localStorage.getItem('lv-orders') || '[]').filter(x => x !== order.order.no); l.unshift(order.order.no); localStorage.setItem('lv-orders', JSON.stringify(l.slice(0, 5))); } catch (e) {}
     const t = T(), o = order.order, q = order.qpay;
     $('#coDone').innerHTML =
       '<div class="cd-head"><div class="eyebrow">' + t.co_done_k + '</div><h1>' + fill(t.co_done_h, { no: esc(o.no) }) + '</h1><p>' + t.co_done_p + '</p></div>' +

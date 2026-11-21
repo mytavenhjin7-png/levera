@@ -44,6 +44,15 @@
   LV.sizesOf = p => (p.ml && LV.fam.get(p.b + '|' + p.line)) || [];
   // one entry per perfume in a list: its smallest size in that list, so the card shows the entry price
   LV.uniq = list => { const best = new Map(); for (const p of list) if (p.ml) { const k = p.b + '|' + p.line, c = best.get(k); if (!c || p.ml < c.ml) best.set(k, p); } return list.filter(p => !p.ml || best.get(p.b + '|' + p.line) === p); };
+  // best-known perfumes, most famous first: [brand slug, name pattern]
+  LV.FAMOUS = [['dior', /^Sauvage(?! Elixir| Parfum)/], ['ysl-beauty', /^Y Eau De Parfum|^Y EDP/i], ['azzaro', /^The Most Wanted|^Wanted/i], ['jean-paul-gaultier', /^Le Male Le Parfum/i], ['chanel', /Bleu/],
+    ['dior', /^Sauvage Elixir/], ['versace', /^Eros/], ['giorgio-armani', /^Acqua Di Gi/i], ['rabanne', /^1 Million/], ['jean-paul-gaultier', /^Le Male Elixir/i], ['tom-ford-beauty', /^Oud Wood/], ['creed', /^Aventus/], ['maison-francis-kurkdjian', /^Baccarat Rouge 540/i], ['lattafa', /^Khamrah/i], ['armaf', /^Club De Nuit Intense/i],
+    ['parfums-de-marly', /^Layton/], ['ysl-beauty', /^Libre/], ['ysl-beauty', /^Black Opium/], ['viktor-rolf', /^Spicebomb/], ['dior', /^Miss Dior/], ['dior', /^J'Adore/i], ['giorgio-armani', /^Stronger With You/],
+    ['valentino', /Born In Roma/i], ['carolina-herrera', /^Good Girl/], ['jean-paul-gaultier', /^Le Male/], ['rabanne', /^Invictus/], ['versace', /^Dylan Blue/], ['tom-ford-beauty', /^Tobacco Vanille/], ['mugler', /^Angel/],
+    ['ysl-beauty', /^La Nuit De L'Homme/i], ['dior', /^Dior Homme|^Homme Intense/], ['dolce-gabbana', /^Light Blue/], ['prada', /^Luna Rossa/], ['giorgio-armani', /^Armani Code|^Code/], ['carolina-herrera', /^Bad Boy/],
+    ['jean-paul-gaultier', /^Scandal/], ['tom-ford-beauty', /^Lost Cherry/], ['givenchy', /^Gentleman/], ['burberry', /^Hero/], ['boss', /^Bottled/], ['mugler', /^Alien/], ['chloe', /^Chlo/], ['lancome', /La Vie/]];
+  // rank of a perfume in LV.FAMOUS (999 = not on the list)
+  LV.fame = p => { const i = LV.FAMOUS.findIndex(([b, re]) => p.b === b && re.test(p.en)); return i < 0 ? 999 : i; };
   LV.base = p => (p.ml ? LV.nm(p).replace(/, \d+ (ml|мл)$/, '') : LV.nm(p));
   LV.card = (p, i = 99) => {
     const t = T(), sized = p.sizes.length > 1;

@@ -4,13 +4,6 @@
   const PAGE = 36;
   const PRICES = [[0, 150000], [150000, 500000], [500000, 1500000], [1500000, 5000000], [5000000, Infinity]];
   const CATS = ['apparel', 'footwear', 'bags', 'accessories', 'fragrance'];
-  // best-known perfumes, most famous first: [brand slug, name pattern]
-  const FAMOUS = [['dior', /^Sauvage(?! Elixir| Parfum)/], ['ysl-beauty', /^Y Eau De Parfum|^Y EDP/i], ['azzaro', /^The Most Wanted|^Wanted/i], ['jean-paul-gaultier', /^Le Male Le Parfum/i], ['chanel', /Bleu/],
-    ['dior', /^Sauvage Elixir/], ['versace', /^Eros/], ['giorgio-armani', /^Acqua Di Gi/i], ['rabanne', /^1 Million/], ['jean-paul-gaultier', /^Le Male Elixir/i], ['tom-ford-beauty', /^Oud Wood/], ['creed', /^Aventus/],
-    ['parfums-de-marly', /^Layton/], ['ysl-beauty', /^Libre/], ['ysl-beauty', /^Black Opium/], ['viktor-rolf', /^Spicebomb/], ['dior', /^Miss Dior/], ['dior', /^J'Adore/i], ['giorgio-armani', /^Stronger With You/],
-    ['valentino', /Born In Roma/i], ['carolina-herrera', /^Good Girl/], ['jean-paul-gaultier', /^Le Male/], ['rabanne', /^Invictus/], ['versace', /^Dylan Blue/], ['tom-ford-beauty', /^Tobacco Vanille/], ['mugler', /^Angel/],
-    ['ysl-beauty', /^La Nuit De L'Homme/i], ['dior', /^Dior Homme|^Homme Intense/], ['dolce-gabbana', /^Light Blue/], ['prada', /^Luna Rossa/], ['giorgio-armani', /^Armani Code|^Code/], ['carolina-herrera', /^Bad Boy/],
-    ['jean-paul-gaultier', /^Scandal/], ['tom-ford-beauty', /^Lost Cherry/], ['givenchy', /^Gentleman/], ['burberry', /^Hero/], ['boss', /^Bottled/], ['mugler', /^Alien/], ['chloe', /^Chlo/], ['lancome', /La Vie/]];
   const params = new URLSearchParams(location.search);
   const st = {
     brand: params.get('brand') || '', cat: params.get('cat') || '', type: params.get('type') || '',
@@ -50,7 +43,7 @@
       if (st.brand) out.sort((a, b) => (b.feat - a.feat) || (a.sort - b.sort));
       else if (st.cat === 'fragrance' || st.type === 'perfume') {
         // fragrances: the world's best-known bottles first (one size each), then the rest mixed by house
-        const fame = p => { const i = FAMOUS.findIndex(([b, re]) => p.b === b && re.test(p.en)); return i < 0 ? 999 : i; };
+        const fame = LV.fame;
         const seen = new Set(), top = [], rest = [];
         out.map(p => [fame(p), p]).sort((a, b) => a[0] - b[0]).forEach(([f, p]) => { if (f < 999 && !seen.has(f)) { seen.add(f); top.push(p); } else rest.push(p); });
         const by = {}; rest.forEach(p => (by[p.b] ||= []).push(p)); const lists = Object.values(by), mixed = []; for (let i = 0; mixed.length < rest.length; i++) lists.forEach(l => { if (l[i]) mixed.push(l[i]); });

@@ -19,8 +19,14 @@
     const byBrand = new Map(); pool.filter(p => !p.feat).forEach(p => { if (!byBrand.has(p.b)) byBrand.set(p.b, []); byBrand.get(p.b).push(p); });
     // always whole rows: 12 pieces, rounded up to what the grid shows per row at this width
     const cols = getComputedStyle($('#grid')).gridTemplateColumns.split(' ').length || 4, want = Math.ceil(12 / cols) * cols;
-    const out = [...feat]; let round = 0;
-    while (out.length < want && round < 40) { for (const list of byBrand.values()) { if (list[round] && out.length < want) out.push(list[round]); } round++; }
+    // one colourway per model, so the same sneaker never shows twice
+    const seen = new Set(), add = p => { const k = p.b + '|' + (p.line || LV.base(p)); if (seen.has(k) || out.length >= want) return; seen.add(k); out.push(p); };
+    const out = [];
+    // fragrances: the best-known bottles first
+    if (filter === 'fragrance') pool.map(p => [LV.fame(p), p]).filter(x => x[0] < 999).sort((x, y) => x[0] - y[0]).forEach(x => add(x[1]));
+    else if (filter === 'all') pool.filter(p => LV.fame(p) < 6).sort((x, y) => LV.fame(x) - LV.fame(y)).slice(0, 2).forEach(add);
+    feat.forEach(add); let round = 0;
+    while (out.length < want && round < 60) { for (const list of byBrand.values()) if (list[round]) add(list[round]); round++; }
     return out.slice(0, want);
   }
   function renderGrid() {

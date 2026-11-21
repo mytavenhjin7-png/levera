@@ -543,3 +543,16 @@ html.m-menu-on{overflow:hidden}
 .m-menu-x{align-self:flex-end;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:grid;place-items:center;cursor:pointer}
 .m-menu-links{display:flex;flex-direction:column;margin-top:28px;border-top:1px solid var(--line)}
 .m-menu-links a{padding:20px 0;border-bottom:1px solid var(--line);font-family:var(--lux);font-weight:600;font-size:30px;line-height:1.1}
+
+/* order tracker extras: my orders, step dates, arrival estimate, items, help line */
+.tr-mine{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 4px}
+.tr-mine .f-label{width:100%;margin:0}
+.tr-chip{border:1px solid currentColor;background:none;color:inherit;padding:4px 10px;border-radius:999px;font-size:12px;cursor:pointer;opacity:.8}
+.tr-chip:hover{opacity:1}
+.f-steps small{opacity:.6;font-size:.85em}
+.tr-eta{margin:12px 0 6px;font-size:14px}
+.tr-items{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.tr-items li{display:flex;gap:10px;align-items:center;font-size:13px}
+.tr-items img{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:4px;flex:none}
+.tr-help{font-size:13px;opacity:.85;margin-top:8px}
+.tr-help a{color:inherit;text-decoration:underline}

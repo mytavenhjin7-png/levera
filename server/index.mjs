@@ -198,13 +198,15 @@ const publicReview = r => ({ id: r.id, name: r.name, rating: r.rating, title: r.
 // can only ever act as the LEVERA concierge.
 const STOP = new Set(['the', 'and', 'for', 'with', 'you', 'have', 'what', 'how', 'much', 'price', 'is', 'do', 'any', 'are', 'can', 'i', 'a', 'an', 'of', 'in', 'to', 'me', 'my', 'гэж', 'байна', 'вэ', 'бэ', 'үнэ', 'хэд', 'юу', 'энэ', 'тэр', 'байгаа', 'уу', 'үү']);
 function searchCatalog(text, limit = 12) {
-  const words = text.toLowerCase().replace(/[’']/g, '').split(/[^\p{L}\p{N}]+/u).filter(w => w.length > 1 && !STOP.has(w));
-  if (!words.length) return [];
+  const words = text.toLowerCase().replace(/[’']/g, '').split(/[^\p{L}\p{N}]+/u).filter(w => w && !STOP.has(w));
+  if (!words.some(w => w.length > 1)) return [];
   const brandName = new Map(brandList.map(b => [b.slug, b.name]));
   const scored = [];
   for (const p of catalogList) {
     const hay = ((brandName.get(p.b) || '') + ' ' + p.en + ' ' + p.mn + ' ' + p.type + ' ' + p.cat + ' ' + (TYPE_LABELS[p.type]?.mn || '')).toLowerCase().replace(/[’']/g, '');
-    let s = 0; for (const w of words) if (hay.includes(w)) s += w.length > 3 ? 2 : 1;
+    // whole words count most (so "YSL Y" finds Y, not every YSL bottle); parts of words only from 2 letters up
+    const toks = new Set(hay.split(/[^\p{L}\p{N}]+/u));
+    let s = 0; for (const w of words) if (toks.has(w)) s += 3; else if (w.length > 1 && hay.includes(w)) s += w.length > 3 ? 2 : 1;
     if (s) scored.push([s, p]);
   }
   return scored.sort((a, b) => b[0] - a[0]).slice(0, limit).map(x => x[1]);

@@ -34,30 +34,44 @@
     subscribed = true; renderOk(); $('#email').value = '';
   });
 
-  // order tracker: live status from the store API
+  // order tracker: live status, the date each step happened, an arrival estimate, what was ordered,
+  // the shopper's own recent orders (remembered on this device) and a direct line when something is off
   const steps = $('#trSteps'), err = $('#trErr'), inp = $('#orderNo'), FLOW = ['paid', 'ordered', 'ereen', 'ub', 'delivered'];
+  const mine = () => { try { return JSON.parse(localStorage.getItem('lv-orders') || '[]'); } catch (e) { return []; } };
   let stage = 0, found = null;
+  const day = s => { const d = new Date(String(s).replace(' ', 'T') + (/Z|+/.test(s) ? '' : 'Z')); return isNaN(d) ? '' : d.toLocaleDateString(LV.lang === 'mn' ? 'mn-MN' : 'en-GB', { month: 'short', day: 'numeric' }); };
   function renderSteps() {
-    const t = T();
-    steps.innerHTML = FLOW.map((k, i) => { const n = i + 1; return '<li class="' + (n < stage ? 'done' : n === stage ? 'done now' : '') + '"' + (n === stage ? ' aria-current="step"' : '') + '><span class="n">0' + n + '</span>' + t['st_' + k] + '</li>'; }).join('');
-    if (found) { const note = $('#trNote'); note.textContent = found.no + ' · ' + t['st_' + found.status] + ' · ' + LV.money(found.total); }
+    const t = T(), when = {}; if (found) (found.history || []).forEach(h => { when[h.status] = h.at; });
+    steps.innerHTML = FLOW.map((k, i) => { const n = i + 1; return '<li class="' + (n < stage ? 'done' : n === stage ? 'done now' : '') + '"' + (n === stage ? ' aria-current="step"' : '') + '><span class="n">0' + n + '</span>' + t['st_' + k] + (when[k] ? ' <small class="mono">· ' + day(when[k]) + '</small>' : '') + '</li>'; }).join('');
+    const note = $('#trNote'), box = $('#trMore');
+    if (found) {
+      note.textContent = found.no + ' · ' + t['st_' + found.status] + ' · ' + LV.money(found.total);
+      const c = new Date(String(found.created_at).replace(' ', 'T') + 'Z'), eta = d => { const x = new Date(c); x.setDate(x.getDate() + d); return x.toLocaleDateString(LV.lang === 'mn' ? 'mn-MN' : 'en-GB', { month: 'short', day: 'numeric' }); };
+      box.innerHTML = (found.status !== 'delivered' && found.status !== 'cancelled' && !isNaN(c) ? '<p class="tr-eta"><b>' + t.tr_eta + '</b> ' + eta(7) + ' – ' + eta(14) + '</p>' : '') +
+        (found.status === 'pending' ? '<p class="tr-eta">' + t.tr_pending + '</p>' : '') +
+        '<ul class="tr-items">' + (found.items || []).map(i => '<li><img src="' + LV.esc(i.img || '') + '" alt="" loading="lazy"><span>' + LV.esc(i.brand) + ' · ' + LV.esc(LV.lang === 'mn' ? (i.name_mn || i.name) : i.name) + (i.size && i.size !== 'One size' ? ' · ' + LV.esc(i.size) : '') + ' × ' + i.qty + '</span></li>').join('') + '</ul>' + help();
+    } else box.innerHTML = '';
+    const list = mine(); $('#trMine').innerHTML = list.length ? '<span class="f-label">' + t.tr_mine + '</span>' + list.map(n => '<button type="button" class="tr-chip mono" data-no="' + LV.esc(n) + '">' + LV.esc(n) + '</button>').join('') : '';
   }
-  const showErr = msg => { err.textContent = msg; err.hidden = false; inp.setAttribute('aria-invalid', 'true'); stage = 0; found = null; renderSteps(); };
+  const help = () => '<p class="tr-help">' + T().tr_help + ' <a href="tel:+97699935918">9993 5918</a> · <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></p>';
+  const showErr = msg => { err.innerHTML = LV.esc(msg) + ' ' + help(); err.hidden = false; inp.setAttribute('aria-invalid', 'true'); stage = 0; found = null; renderSteps(); };
   async function track(no) {
     try {
       found = await LV.api('/api/orders/' + encodeURIComponent(no));
       err.hidden = true; inp.removeAttribute('aria-invalid');
       stage = found.status === 'pending' || found.status === 'cancelled' ? 0 : FLOW.indexOf(found.status) + 1;
+      try { const l = mine().filter(x => x !== found.no); l.unshift(found.no); localStorage.setItem('lv-orders', JSON.stringify(l.slice(0, 5))); } catch (e) {}
       renderSteps();
-    } catch (e2) { showErr(e2.status === 404 ? T().tr_none : T().co_err_net); }
+    } catch (e2) { showErr(e2.status === 404 ? T().tr_none : T().tr_offline); }
   }
+  $('#trMine').addEventListener('click', e => { const b = e.target.closest('[data-no]'); if (b) { inp.value = b.dataset.no; track(b.dataset.no); } });
   $('#trackForm').addEventListener('submit', e => {
     e.preventDefault();
-    const m = inp.value.trim().toUpperCase().replace(/\s+/g, '').match(/^LV-?(\d{2})-?(\d{4})$/);
+    const m = inp.value.trim().toUpperCase().replace(/s+/g, '').match(/^LV-?(d{2})-?(d{4})$/);
     if (!m) return showErr(T().tr_err);
     inp.value = 'LV-' + m[1] + '-' + m[2]; track(inp.value);
   });
-  const qNo = new URLSearchParams(location.search).get('order');
+  const qNo = new URLSearchParams(location.search).get('order') || mine()[0];
   if (qNo) { inp.value = qNo; track(qNo); }
   inp.addEventListener('input', () => { if (!err.hidden) { err.hidden = true; inp.removeAttribute('aria-invalid'); } });
 

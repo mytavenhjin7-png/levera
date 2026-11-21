@@ -1,6 +1,6 @@
 /* LEVERA — texts for the shop, product, checkout and order-tracking pages (MN/EN). Loaded after data.js. */
 Object.assign(window.LV.t.mn, {
-  nav_shop:'Дэлгүүр', nav_price:'Үнэ ба карго', shop_k:'Дэлгүүр', shop_h:'Бүх <em>бараа</em>', shop_p:'70+ брэнд, 2,100+ бараа. Үнэ бүрт барааны үнэ, карго, хүргэлт багтсан.',
+  nav_shop:'Дэлгүүр', nav_price:'Үнэ ба карго', shop_k:'Дэлгүүр', shop_h:'Бүх <em>бараа</em>', shop_p:'90+ брэнд, 2,700+ бараа. Үнэ бүрт барааны үнэ, карго, хүргэлт багтсан.',
   all_brands:'Бүх брэнд', f_brand:'Брэнд', f_cat:'Ангилал', f_type:'Төрөл', f_price:'Үнэ', f_search:'Дэлгүүрээс хайх…', filters:'Шүүлтүүр', clear:'Цэвэрлэх', apply:'Харуулах',
   sort:'Эрэмбэлэх', sort_feat:'Онцлох', sort_low:'Үнэ: багаас их', sort_high:'Үнэ: ихээс бага', sort_name:'Нэрээр (A–Z)',
   results:'{n} бараа', load_more:'Цааш үзэх', showing:'{a} / {b}', view_all:'Бүх {n} барааг үзэх', brand_n:'{n} бараа', price_any:'Бүх үнэ',
@@ -20,16 +20,16 @@ Object.assign(window.LV.t.mn, {
   co_demo:'Жишээ горим: QPay мерчант гэрээ холбогдоогүй тул энэ QR жишээ. Төлбөрийн мэдээллийг бид утсаар илгээнэ.', co_track:'Захиалга хянах', co_empty:'Сагс хоосон байна.', co_continue:'Дэлгүүр үргэлжлүүлэх', co_cargo:'Үүнээс карго',
   districts:['Сүхбаатар','Чингэлтэй','Баянгол','Баянзүрх','Хан-Уул','Сонгинохайрхан','Налайх','Багануур','Багахангай','Орон нутаг'],
   st_pending:'Төлбөр хүлээгдэж байна', st_paid:'Төлбөр орсон', st_ordered:'Захиалсан', st_ereen:'Эрээнд ирсэн', st_ub:'Улаанбаатарт ирсэн', st_delivered:'Хүргэгдсэн', st_cancelled:'Цуцалсан',
-  tr_none:'Ийм дугаартай захиалга олдсонгүй.', tr_demo:'Захиалгын дугаараа оруулбал бодит төлөв харагдана.',
+  tr_none:'Ийм дугаартай захиалга олдсонгүй.', tr_eta:'Ирэх хугацаа:', tr_pending:'Төлбөр орсны дараа бид шууд захиална.', tr_mine:'Миний захиалгууд', tr_help:'Асуух зүйл байвал залгаарай:', tr_offline:'Одоогоор шалгаж чадсангүй.', tr_demo:'Захиалгын дугаараа оруулбал бодит төлөв харагдана.',
   how_k:'Үнэ хэрхэн бодогддог', how_h:'Нэг үнэ. <em>Ил тод.</em>', how_p:'Бид үнийг таахгүй — тооцоолдог. Бараа бүрийн үнэ гурван хэсгээс бүрдэнэ.',
   how1_h:'Барааны үнэ', how1_p:'Барааны үнэ юанийн ханшаар тооцогдоно.',
   how2_h:'Карго хүргэлт', how2_p:'Эрээн → Улаанбаатар. Жин эсвэл оврын аль өндөр дүнгээр тооцно.',
   how3_h:'LEVERA үйлчилгээ', how3_p:'Захиалга, шалгалт, савлагаа, хүргэлт. Төлбөр төлөх үед нэмэлт зардал гарахгүй.',
   how_live:'Өнөөдрийн тариф', how_ex:'Жишээ', how_sum:'Нийт',
-  houses_p:'70+ брэнд, 2,100+ бараа. Брэнд дээр дарж бүх барааг үзээрэй.', stat_line:'бараа · 70+ брэнд · карго багтсан үнэ'
+  houses_p:'90+ брэнд, 2,700+ бараа. Брэнд дээр дарж бүх барааг үзээрэй.', stat_line:'бараа · 90+ брэнд · карго багтсан үнэ'
 });
 Object.assign(window.LV.t.en, {
-  nav_shop:'Shop', nav_price:'Pricing', shop_k:'The shop', shop_h:'Every <em>piece</em>', shop_p:'70+ houses, 2,100+ pieces. Every price includes the item price, cargo and delivery.',
+  nav_shop:'Shop', nav_price:'Pricing', shop_k:'The shop', shop_h:'Every <em>piece</em>', shop_p:'90+ houses, 2,700+ pieces. Every price includes the item price, cargo and delivery.',
   all_brands:'All brands', f_brand:'Brand', f_cat:'Category', f_type:'Type', f_price:'Price', f_search:'Search the shop…', filters:'Filters', clear:'Clear', apply:'Show',
   sort:'Sort', sort_feat:'Featured', sort_low:'Price: low to high', sort_high:'Price: high to low', sort_name:'Name (A–Z)',
   results:'{n} pieces', load_more:'Load more', showing:'{a} of {b}', view_all:'View all {n} pieces', brand_n:'{n} pieces', price_any:'Any price',
@@ -49,13 +49,13 @@ Object.assign(window.LV.t.en, {
   co_demo:'Demo mode: the QPay merchant account isn’t connected yet, so this QR is an example. We’ll send payment details by phone.', co_track:'Track order', co_empty:'Your bag is empty.', co_continue:'Continue shopping', co_cargo:'Of which cargo',
   districts:['Sükhbaatar','Chingeltei','Bayangol','Bayanzürkh','Khan-Uul','Songinokhairkhan','Nalaikh','Baganuur','Bagakhangai','Countryside'],
   st_pending:'Awaiting payment', st_paid:'Paid', st_ordered:'Ordered', st_ereen:'At Ereen warehouse', st_ub:'In Ulaanbaatar', st_delivered:'Delivered', st_cancelled:'Cancelled',
-  tr_none:'No order with that number.', tr_demo:'Enter your order number to see its live status.',
+  tr_none:'No order with that number.', tr_eta:'Expected:', tr_pending:'We order as soon as payment arrives.', tr_mine:'My orders', tr_help:'Questions? Call us:', tr_offline:'Could not check right now.', tr_demo:'Enter your order number to see its live status.',
   how_k:'How pricing works', how_h:'One price. <em>In the open.</em>', how_p:'We don’t guess prices — we calculate them. Every price is built from three parts.',
   how1_h:'Item price', how1_p:'The item price is converted using the yuan exchange rate.',
   how2_h:'Cargo delivery', how2_p:'Ereen → Ulaanbaatar. Charged by weight or volume, whichever is higher.',
   how3_h:'LEVERA service', how3_p:'Ordering, inspection, packing and delivery. Nothing added at checkout.',
   how_live:'Today’s rates', how_ex:'Example', how_sum:'Total',
-  houses_p:'70+ houses, 2,100+ pieces. Pick a house to see everything.', stat_line:'pieces · 70+ houses · cargo-inclusive prices'
+  houses_p:'90+ houses, 2,700+ pieces. Pick a house to see everything.', stat_line:'pieces · 90+ houses · cargo-inclusive prices'
 });
 
 /* product page details + customer reviews */
@@ -90,8 +90,8 @@ Object.assign(window.LV.t.en, {
 
 /* delivery wording (replaces the earlier cargo wording everywhere customers see it) */
 Object.assign(window.LV.t.mn, {
-  nav_price:'Бараагаа хянах', f1:'Хүргэлт', incl:'Хүргэлт багтсан', stat_line:'бараа · 70+ брэнд · хүргэлт багтсан үнэ',
-  shop_p:'70+ брэнд, 2,100+ бараа. Үнэ бүрт хүргэлт багтсан.',
+  nav_price:'Бараагаа хянах', f1:'Хүргэлт', incl:'Хүргэлт багтсан', stat_line:'бараа · 90+ брэнд · хүргэлт багтсан үнэ',
+  shop_p:'90+ брэнд, 2,700+ бараа. Үнэ бүрт хүргэлт багтсан.',
   p4_p:'Хүргэлтийн зардал үнэд аль хэдийн орсон. Төлбөр төлөх үед гэнэтийн нэмэлт гарахгүй.',
   b_note:'Хүргэлт үнэд багтсан · 7–14 хоногт хүргэнэ', p_incl:'Хүргэлт багтсан', p_incl_frag:'Гаалийн татвар, НӨАТ, хүргэлт багтсан', co_delivery:'Хүргэлт', co_included:'Үнэд багтсан',
   st_ereen:'Агуулахад ирсэн', st_ub:'Хүргэлтэд гарсан',
@@ -105,8 +105,8 @@ Object.assign(window.LV.t.mn, {
   p_gallery:'Зураг {i} / {n}', p_prev:'Өмнөх зураг', p_next:'Дараагийн зураг'
 });
 Object.assign(window.LV.t.en, {
-  nav_price:'Track order', f1:'Delivery', incl:'Delivery included', stat_line:'pieces · 70+ houses · delivery included',
-  shop_p:'70+ houses, 2,100+ pieces. Every price includes delivery.',
+  nav_price:'Track order', f1:'Delivery', incl:'Delivery included', stat_line:'pieces · 90+ houses · delivery included',
+  shop_p:'90+ houses, 2,700+ pieces. Every price includes delivery.',
   p4_p:'Delivery is already in the price. No surprises at checkout.',
   b_note:'Delivery included · arrives in 7–14 days', p_incl:'Delivery included', p_incl_frag:'Customs duty, VAT and delivery included', co_delivery:'Delivery', co_included:'Included',
   st_ereen:'At our warehouse', st_ub:'Out for delivery',
@@ -122,7 +122,7 @@ Object.assign(window.LV.t.en, {
 
 /* reviews page */
 Object.assign(window.LV.t.mn, {
-  houses_p:'70+ брэнд — Nike-ийн KD, LeBron, Kobe цувралаас эхлээд Moncler, Arc’teryx хүртэл. Брэнд дээр дарж бүх барааг үзээрэй.',
+  houses_p:'90+ брэнд — Nike-ийн KD, LeBron, Kobe цувралаас эхлээд Moncler, Arc’teryx хүртэл. Брэнд дээр дарж бүх барааг үзээрэй.',
   nav_reviews:'Сэтгэгдэл', rv_be_first:'Сэтгэгдэл алга', rv_see:'Сэтгэгдэл үзэх', rv_all:'Бүх сэтгэгдэл', rv_any:'Бүгд',
   rv_none_all:'Баталгаат сэтгэгдэл одоогоор цөөн байна. Худалдан авалт хийсэн бол анхны сэтгэгдлээ үлдээгээрэй.',
   rv_none_filter:'Энэ шүүлтүүрт тохирох сэтгэгдэл алга.', rv_offline:'Сэтгэгдлийг ачаалж чадсангүй. Серверийг (npm start) асаасан эсэхийг шалгана уу.',
@@ -130,7 +130,7 @@ Object.assign(window.LV.t.mn, {
   rv_piece:'Бараа', rv_find:'Барааны нэрээр хайх…', rv_change:'Солих', rv_err_piece:'Аль бараанд сэтгэгдэл бичихээ сонгоно уу.'
 });
 Object.assign(window.LV.t.en, {
-  houses_p:'70+ houses — from Nike’s KD, LeBron and Kobe lines to Moncler and Arc’teryx. Pick a house to see everything.',
+  houses_p:'90+ houses — from Nike’s KD, LeBron and Kobe lines to Moncler and Arc’teryx. Pick a house to see everything.',
   nav_reviews:'Reviews', rv_be_first:'No reviews yet', rv_see:'See reviews', rv_all:'All reviews', rv_any:'All',
   rv_none_all:'There are only a few verified reviews so far. Bought something? Be one of the first to review it.',
   rv_none_filter:'No reviews match this filter.', rv_offline:'Couldn’t load reviews. Check that the server (npm start) is running.',
