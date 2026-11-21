@@ -39,7 +39,7 @@
   const steps = $('#trSteps'), err = $('#trErr'), inp = $('#orderNo'), FLOW = ['paid', 'ordered', 'ereen', 'ub', 'delivered'];
   const mine = () => { try { return JSON.parse(localStorage.getItem('lv-orders') || '[]'); } catch (e) { return []; } };
   let stage = 0, found = null;
-  const day = s => { const d = new Date(String(s).replace(' ', 'T') + (/Z|+/.test(s) ? '' : 'Z')); return isNaN(d) ? '' : d.toLocaleDateString(LV.lang === 'mn' ? 'mn-MN' : 'en-GB', { month: 'short', day: 'numeric' }); };
+  const day = s => { const d = new Date(String(s).replace(' ', 'T') + (/Z|\+/.test(s) ? '' : 'Z')); return isNaN(d) ? '' : d.toLocaleDateString(LV.lang === 'mn' ? 'mn-MN' : 'en-GB', { month: 'short', day: 'numeric' }); };
   function renderSteps() {
     const t = T(), when = {}; if (found) (found.history || []).forEach(h => { when[h.status] = h.at; });
     steps.innerHTML = FLOW.map((k, i) => { const n = i + 1; return '<li class="' + (n < stage ? 'done' : n === stage ? 'done now' : '') + '"' + (n === stage ? ' aria-current="step"' : '') + '><span class="n">0' + n + '</span>' + t['st_' + k] + (when[k] ? ' <small class="mono">· ' + day(when[k]) + '</small>' : '') + '</li>'; }).join('');
@@ -67,7 +67,7 @@
   $('#trMine').addEventListener('click', e => { const b = e.target.closest('[data-no]'); if (b) { inp.value = b.dataset.no; track(b.dataset.no); } });
   $('#trackForm').addEventListener('submit', e => {
     e.preventDefault();
-    const m = inp.value.trim().toUpperCase().replace(/s+/g, '').match(/^LV-?(d{2})-?(d{4})$/);
+    const m = inp.value.trim().toUpperCase().replace(/\s+/g, '').match(/^LV-?(\d{2})-?(\d{4})$/);
     if (!m) return showErr(T().tr_err);
     inp.value = 'LV-' + m[1] + '-' + m[2]; track(inp.value);
   });
