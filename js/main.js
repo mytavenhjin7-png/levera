@@ -24,7 +24,7 @@
     const out = [];
     // fragrances: the best-known bottles first
     if (filter === 'fragrance') pool.map(p => [LV.fame(p), p]).filter(x => x[0] < 999).sort((x, y) => x[0] - y[0]).forEach(x => add(x[1]));
-    else if (filter === 'all') pool.filter(p => LV.fame(p) < 6).sort((x, y) => LV.fame(x) - LV.fame(y)).slice(0, 2).forEach(add);
+    else if (filter === 'all') pool.filter(p => LV.fame(p) < 6).sort((x, y) => LV.fame(x) - LV.fame(y)).filter((p, i, a) => a.findIndex(q => q.b === p.b) === i).slice(0, 2).forEach(add);
     feat.forEach(add); let round = 0;
     while (out.length < want && round < 60) { for (const list of byBrand.values()) if (list[round]) add(list[round]); round++; }
     return out.slice(0, want);
