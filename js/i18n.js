@@ -152,9 +152,9 @@ Object.assign(window.LV.t.en, {
 Object.assign(window.LV.t.mn, {
   fav_add:'Хадгалах', fav_remove:'Хадгалснаас хасах', fav_save:'Хадгалах', fav_page:'Хадгалсан бараа', fav_k:'Хадгалсан', fav_h:'Таны <em>сонголт</em>',
   fav_empty:'Хадгалсан бараа алга. Барааны зураг дээрх ♡ товчийг дарж хадгална.', fav_note:'Энэ төхөөрөмж дээр хадгалагдана.',
-  seen_k:'Сүүлд үзсэн', seen_h:'Таны <em>үзсэн</em> бараа',
-  sig_k:'Сагсан бөмбөг', sig_h:'Signature <em>цуврал</em>', sig_all:'Бүх Nike гутал',
-  win_k:'Өвөл', win_h:'−40°-д <em>бэлэн</em>', win_all:'Бүх хөвөнтэй куртка',
+  seen_k:'Сүүлд үзсэн', seen_h:'Таалагдсан уу? <em>Буцаад</em> хараарай',
+  hot:'Эрэлттэй', sig_k:'Талбайн домогууд', sig_h:'Kobe, LeBron, KD — <em>signature</em> пүүз', sig_all:'Бүх сагсны пүүз',
+  win_k:'Өвөл ирлээ', win_h:'−40°-д ч <em>дулаахан</em>', win_all:'Бүх өвлийн хувцас',
   sq_link:'Үнэрийн тест', sq_cta_h:'Өөрт тохирох үнэрээ ол', sq_cta_p:'10 асуултад хариулаад танд яг тохирох үнэртэй усыг тайлбартай нь аваарай.', sq_pdp:'Энэ танд тохирох уу? Үнэрийн тест өгөх →', gc_k:'Бэлгийн карт', gc_h:'Бэлэг болгоорой', gc_p:'₮10,000–200,000. QPay-ээр төлсний дараа код гарах бөгөөд дурын захиалгад ашиглана.', gc_buy:'{a} худалдаж авах', gc_get:'Кодоо авах', gc_code:'Таны бэлгийн картын код:', gc_use:'Захиалга хийхдээ энэ кодыг оруулна. Кодоо хадгалаарай.', gc_wait:'Төлбөр хараахан ороогүй байна.', gc_void:'Энэ карт хүчингүй болсон.', gc_nf:'Захиалга олдсонгүй. Дугаар, утсаа шалгана уу.', gc_find:'Өмнө нь авсан уу? Захиалгын дугаар, утсаа оруулж кодоо авна уу.', gc_demo:'QPay холбогдоогүй үед төлбөрийг манай баг шалгаж, картыг идэвхжүүлнэ.', gc_have:'Бэлгийн карт', gc_apply:'Хэрэглэх', gc_bad:'Код буруу эсвэл идэвхгүй байна.', gc_left:'Хэрэглэсний дараах үлдэгдэл: {a}',
   rk_h:'Таны зэрэглэл', rk_none:'Гишүүн', rk_bronze:'Хүрэл', rk_silver:'Мөнгө', rk_gold:'Алт', rk_off:'{r} хөнгөлөлт {p}%', rk_next:'{r} зэрэгт хүрэхэд {a} үлдлээ ({p}% хөнгөлөлт).', rk_top:'Хамгийн дээд зэрэглэл. Баярлалаа!',
   fn_h:'Үнэрийн найрлага', fn_top:'Дээд ноот', fn_heart:'Дунд ноот', fn_base:'Суурь ноот', v_store_v:'Улаанбаатар хот', pr_min:'Доод ₮', pr_max:'Дээд ₮', pr_go:'Шүүх',
@@ -169,9 +169,9 @@ Object.assign(window.LV.t.mn, {
 Object.assign(window.LV.t.en, {
   fav_add:'Save', fav_remove:'Remove from saved', fav_save:'Save', fav_page:'Saved pieces', fav_k:'Saved', fav_h:'Your <em>picks</em>',
   fav_empty:'Nothing saved yet. Tap the ♡ on any piece to keep it here.', fav_note:'Saved on this device.',
-  seen_k:'Recently viewed', seen_h:'Pieces you <em>looked at</em>',
-  sig_k:'Basketball', sig_h:'Signature <em>lines</em>', sig_all:'All Nike footwear',
-  win_k:'Winter', win_h:'Ready for <em>−40°</em>', win_all:'All down jackets',
+  seen_k:'Recently viewed', seen_h:'Still thinking? <em>Pick up</em> where you left off',
+  hot:'In demand', sig_k:'Court legends', sig_h:'Kobe, LeBron, KD — <em>signature</em> kicks', sig_all:'All basketball shoes',
+  win_k:'Winter is here', win_h:'Warm even at <em>−40°</em>', win_all:'All winter wear',
   sq_link:'Scent finder', sq_cta_h:'Find your scent', sq_cta_p:'Answer 10 questions and get the fragrance that suits you, with the reasons why.', sq_pdp:'Is it right for you? Take the scent quiz →', gc_k:'Gift card', gc_h:'Give it as a gift', gc_p:'₮10,000–200,000. After QPay payment you get a code that works on any order.', gc_buy:'Buy for {a}', gc_get:'Get my code', gc_code:'Your gift card code:', gc_use:'Enter this code at checkout. Keep it safe.', gc_wait:'Payment hasn’t arrived yet.', gc_void:'This card is no longer valid.', gc_nf:'Order not found. Check the number and phone.', gc_find:'Bought one before? Enter the order number and phone to get your code.', gc_demo:'Until QPay is connected, our team checks the payment and activates the card.', gc_have:'Gift card', gc_apply:'Apply', gc_bad:'Code is wrong or not active.', gc_left:'Balance after this order: {a}',
   rk_h:'Your rank', rk_none:'Member', rk_bronze:'Bronze', rk_silver:'Silver', rk_gold:'Gold', rk_off:'{r} discount {p}%', rk_next:'{a} to go until {r} ({p}% off).', rk_top:'Top rank. Thank you!',
   fn_h:'Fragrance notes', fn_top:'Top', fn_heart:'Heart', fn_base:'Base', v_store_v:'Ulaanbaatar', pr_min:'From ₮', pr_max:'To ₮', pr_go:'Apply',
@@ -186,10 +186,10 @@ Object.assign(window.LV.t.en, {
 
 /* best sellers */
 Object.assign(window.LV.t.mn, {
-  sort_best:'Эрэлттэй', best_k:'Бестселлер', best_h:'Хамгийн их <em>зарагдсан</em>', pick_k:'Онцлох', pick_h:'Онцлох <em>сонголт</em>', best_all:'Бүгдийг үзэх'
+  sort_best:'Эрэлттэй', best_k:'Бестселлер', best_h:'Хамгийн их <em>зарагдсан</em>', pick_k:'Одоо хамгийн их эрэлттэй', pick_h:'Бусад юу <em>авч</em> байна', best_all:'Бүгдийг үзэх'
 });
 Object.assign(window.LV.t.en, {
-  sort_best:'Popular', best_k:'Best sellers', best_h:'Most <em>ordered</em>', pick_k:'Featured', pick_h:'Our <em>picks</em>', best_all:'See all'
+  sort_best:'Popular', best_k:'Best sellers', best_h:'Most <em>ordered</em>', pick_k:'Most wanted now', pick_h:'What everyone is <em>getting</em>', best_all:'See all'
 });
 
 /* customer accounts */

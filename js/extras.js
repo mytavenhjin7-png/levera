@@ -50,9 +50,18 @@
     document.querySelectorAll('.rail-sec').forEach(s => s.remove());
     const t = T(), ps = LV.products;
     // one colourway per model, newest model numbers first
-    const sig = []; const seenLine = new Set();
-    for (const p of ps.filter(p => p.b === 'nike' && SIG.test(p.line)).sort((a, b) => b.sort - a.sort)) { if (!seenLine.has(p.line)) { seenLine.add(p.line); sig.push(p); } }
-    const winter = ps.filter(p => WINTER.has(p.type) || (p.type === 'jacket' && ['the-north-face', 'arcteryx', 'columbia'].includes(p.b)) || /shearling/.test(p.id || ''));
+    // one shoe per model (LeBron XXIII and XXIII Elite count as one), then take turns between the
+    // signature families so the rail reads Kobe → LeBron → KD → Book → Jokic → … instead of two of a kind
+    const FAM = ['Kobe', 'LeBron', 'KD', 'Book', 'Jokic', 'Ja', 'Tatum', 'Sabrina', 'G.T. Cut', 'Luka', 'Giannis'];
+    const famOf = p => FAM.find(f => (p.line || '').replace(/^(Air Zoom |WMNS |Nike )/, '').startsWith(f + ' '));
+    const byFam = {}; const seenModel = new Set();
+    for (const p of ps.filter(p => (p.b === 'nike' || /jokic/i.test(p.line || '')) && famOf(p)).sort((a, b) => (b.feat - a.feat) || (b.sort - a.sort))) {
+      const f = famOf(p), model = (p.line || '').replace(/^(Air Zoom |WMNS |Nike )/, '').split(' ').slice(0, f.split(' ').length + (f === 'Jokic' ? 2 : 1)).join(' ');
+      if (seenModel.has(model)) continue; seenModel.add(model); (byFam[f] ||= []).push(p);
+    }
+    const sig = [];
+    for (let i = 0; sig.length < 40 && i < 30; i++) for (const f of FAM) if (byFam[f] && byFam[f][i]) sig.push(byFam[f][i]);
+    const winter = ps.filter(p => WINTER.has(p.type) || (p.type === 'jacket' && ['the-north-face', 'arcteryx', 'columbia'].includes(p.b)) || (p.b === 'columbia') || /shearling/.test(p.id || ''));
     const pickWinter = []; const perBrand = {};
     for (const p of winter) { perBrand[p.b] = (perBrand[p.b] || 0) + 1; if (perBrand[p.b] <= 3) pickWinter.push(p); }
     const seen = seenList();

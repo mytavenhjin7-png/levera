@@ -7,6 +7,7 @@
 <url><loc>https://levera-mn.web.app/shop.html?cat=apparel</loc><priority>0.7</priority></url>
 <url><loc>https://levera-mn.web.app/scent.html</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/reviews.html</loc><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/shop.html?brand=361</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=acne-studios</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=adidas</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=afnan</loc><priority>0.6</priority></url>
@@ -113,6 +114,20 @@
 <url><loc>https://levera-mn.web.app/shop.html?brand=xerjoff</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=ysl-beauty</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=zara</loc><priority>0.6</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-1-beige-white</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-1-black-white</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-1-purple-green</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-ace</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-azure</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-denver</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-egret-oat-milk</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-gt-g-015</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-high-pearl</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-joker</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-serbia</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-sunset</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-teal-glass</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=361-jokic-joker-2-usa-blue</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=acne-studios-canada-wool-scarf-grey</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=acne-studios-face-logo-cap-black</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=acne-studios-face-logo-tote-black</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
@@ -2142,7 +2157,7 @@
 <url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-5-protro-lakers</loc><lastmod>2026-11-12</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-5-protro-rush-blue-wolf-gray</loc><lastmod>2026-11-18</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-5-protro-year-of-the-mamba-eggplant</loc><lastmod>2026-11-12</lastmod><priority>0.5</priority></url>
-<url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-6-protro-grinch</loc><lastmod>2026-11-21</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-6-protro-grinch</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-6-protro-reverse-grinch</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-6-protro-sail</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=nike-kobe-8-protro-court-purple</loc><lastmod>2026-11-12</lastmod><priority>0.5</priority></url>
