@@ -797,7 +797,22 @@
     "Safari EDP": "amber|black currant,cassis,hiacynth,mandarin orange,narcissus,orange,tagetes,galbanum|italian jasmine,orange blossom,orris root,rose,rosemary,narcissus|amber,cedar,patchouli,sandalwood,vetiver",
     "Safari EDT": "amber|aldehydes,artemisia,bergamot,coriander,green notes,lemon,neroli,lavender|carnation,cinnamon,cyclamen,jasmine,rose,tarragon|amber,cedar,musk,oakmoss,patchouli,sandalwood,leather",
     "Woman Intense": "amber|neroli,pink pepper,rhubarb,black currant|jasmine sambac,orange blossom,tuberose|amberwood,sandalwood,black vanilla husk",
-    "Tiffany & Co. EDP": "woody|bergamot,orange,lemon|black currant,iris,rose,peach|patchouli,musk"
+    "Tiffany & Co. EDP": "woody|bergamot,orange,lemon|black currant,iris,rose,peach|patchouli,musk",
+    "Imagination Cologne": "citrus|citron,calabrian bergamot,sicilian orange|neroli,ginger,ceylon cinnamon|ambroxan,guaiac wood,black tea,olibanum",
+    "Ombre Nomade EDP": "woody|raspberry,rose|incense,birch|oud,benzoin",
+    "Afternoon Swim Cologne": "citrus|mandarin,bergamot,sicilian orange|ginger|ambergris",
+    "L'Immensité EDP": "aromatic|grapefruit,ginger|labdanum|ambergris",
+    "Météore EDP": "citrus|calabrian bergamot,mandarin,sicilian orange|black pepper,sichuan pepper,nutmeg|vetiver",
+    "Pacific Chill Cologne": "citrus|citron,orange,lemon,blackcurrant|mint,coriander,basil|apricot,fig,carrot seeds",
+    "Attrape-Rêves EDP": "fruity|lychee,pear|peony|cocoa,patchouli",
+    "Sun Song Cologne": "citrus|orange,petitgrain|neroli,orange blossom|musk",
+    "California Dream Cologne": "citrus|mandarin,bergamot|pink pepper|ambrette,benzoin",
+    "On The Beach Cologne": "citrus|yuzu,neroli|rosemary,thyme|pink pepper,ginger",
+    "City of Stars EDP": "citrus|blood orange,lime,lemon,bergamot,mandarin|tiare flower|sandalwood,musk",
+    "Sur la Route Cologne": "citrus|bergamot,citron,mandarin|cedar,mint|musk,vetiver",
+    "Les Sables Roses EDP": "woody|rose|oud,ambergris|white musk",
+    "Ambre Levant EDP": "amber|incense,pink pepper|labdanum,cistus|amber,vanilla",
+    "Fleur du Désert EDP": "floral|bergamot,saffron|rose,orange blossom|oud,ambergris"
   };
   const name = n => (LV.lang === 'mn' ? (NOTE_MN[n] || n) : n);
   // { family, top, heart, base } in the current language, or null for pieces without notes
