@@ -30,6 +30,19 @@
       '<div><dt>' + t.fn_top + '</dt><dd>' + esc(n.top) + '</dd></div><div><dt>' + t.fn_heart + '</dt><dd>' + esc(n.heart) + '</dd></div><div><dt>' + t.fn_base + '</dt><dd>' + esc(n.base) + '</dd></div></dl><a class="pdp-sq" href="scent.html">' + t.sq_pdp + '</a></section>';
   }
 
+  // this piece's own description, share card and Google product data (name, photo, price in ₮, in stock)
+  function seo(p) {
+    const abs = u => new URL(u, location.href).href, img = abs((p.imgs && p.imgs[0]) || p.img || 'assets/og.jpg');
+    const desc = p.brand + ' ' + p.en + ' — ' + LV.money(p.price) + '. Карго, хүргэлт үнэд багтсан. QPay төлбөр, 7–14 хоногт Улаанбаатарт хүргэнэ.';
+    const meta = (attr, key, val) => { let m = document.head.querySelector('meta[' + attr + '="' + key + '"]'); if (!m) { m = document.createElement('meta'); m.setAttribute(attr, key); document.head.appendChild(m); } m.setAttribute('content', val); };
+    meta('name', 'description', desc); meta('property', 'og:title', p.brand + ' ' + p.en + ' — LEVERA'); meta('property', 'og:description', desc);
+    meta('property', 'og:image', img); meta('property', 'og:url', location.href); meta('property', 'product:price:amount', String(p.price)); meta('property', 'product:price:currency', 'MNT');
+    let ld = document.getElementById('ldProduct'); if (!ld) { ld = document.createElement('script'); ld.type = 'application/ld+json'; ld.id = 'ldProduct'; document.head.appendChild(ld); }
+    const data = { '@context': 'https://schema.org', '@type': 'Product', name: p.brand + ' ' + p.en, image: (p.imgs && p.imgs.length ? p.imgs : [p.img]).filter(Boolean).map(abs), brand: { '@type': 'Brand', name: p.brand }, sku: p.id,
+      offers: { '@type': 'Offer', url: location.href, priceCurrency: 'MNT', price: p.price, availability: 'https://schema.org/InStock', itemCondition: 'https://schema.org/NewCondition' } };
+    if (p.rv && p.rv[1]) data.aggregateRating = { '@type': 'AggregateRating', ratingValue: p.rv[0], reviewCount: p.rv[1] };
+    ld.textContent = JSON.stringify(data);
+  }
   function render() {
     const t = T();
     if (err) {
@@ -39,6 +52,7 @@
     if (!p) return;
     const br = LV.brandMap.get(p.b), [model, colour] = split(LV.base(p)), mls = LV.sizesOf(p);
     document.title = p.brand + ' ' + LV.nm(p) + ' — LEVERA';
+    seo(p);
     $('#crumbs').innerHTML = '<a href="shop.html">' + t.nav_shop + '</a><span aria-hidden="true">/</span><a href="shop.html?brand=' + p.b + '">' + esc(p.brand) + '</a><span aria-hidden="true">/</span><a href="shop.html?brand=' + p.b + '&cat=' + p.cat + '">' + esc(LV.catLabel(p.cat)) + '</a>';
     const sized = p.sizes.length > 1;
     const row = (k, v) => '<div><dt>' + k + '</dt><dd>' + v + '</dd></div>';

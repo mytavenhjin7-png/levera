@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin.html
 Disallow: /api/
-Sitemap: /sitemap.xml
+Sitemap: https://levera-mn.web.app/sitemap.xml
