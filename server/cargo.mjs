@@ -52,6 +52,12 @@ export function priceProduct(p, s) {
   const fee = serviceFee(goods, s);
   const total = roundUp(goods + china + fee + cargo.price + local, 1000);
   const cost = Math.round(goods + china + cargo.price + local);
+  // owner's rule: landed cost (China price × rate + China shipping + cargo + UB delivery) + markup_pct
+  // (70.9% = ₮275,000 cost → ₮470,000 price). Applies to every piece when set.
+  if (s.markup_pct > 0) {
+    const shelf = roundUp(cost * (1 + s.markup_pct / 100), 1000);
+    return { total: shelf, basis: 'markup', goods: Math.round(goods), china: Math.round(china), fee: shelf - cost, cargo, local, cost, margin: shelf - cost };
+  }
   if (p.type === 'perfume' && s.frag_mnt_per_cny > 0) {
     const shelf = roundUp(p.cny * s.frag_mnt_per_cny, 1000);
     return { total: shelf, basis: 'frag', cargo, local, cost, margin: shelf - cost };

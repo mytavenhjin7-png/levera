@@ -227,7 +227,8 @@ export const ready = connect();
 export const DEFAULTS = {
   cargo_yuan: 545, cargo_kg: 3000, cargo_m3: 599, hicargo_branch_id: 1, hicargo_branch: 'Цирк салбар',
   goods_cny_rate: 545,        // ₮ per ¥ for the Dewu item price itself
-  service_fee_pct: 20,        // LEVERA service fee on the item price, up to service_fee_high_from_mnt …
+  markup_pct: 70.9,           // owner's rule: price = landed cost × (1 + markup) — ₮275,000 → ₮470,000; 0 = old fee model
+  service_fee_pct: 20,        // (old model) LEVERA service fee on the item price, up to service_fee_high_from_mnt …
   service_fee_high_pct: 15,   // … and on the part of the item price above it (luxury pieces)
   service_fee_high_from_mnt: 2000000,
   service_fee_min_mnt: 15000, // never less than this per piece
@@ -241,7 +242,7 @@ export const DEFAULTS = {
   frag_fee_pct: 0,            // on top of the duty-paid retail price (0 = the local shop price)
   rates_synced_at: ''
 };
-export const PRICE_KEYS = ['goods_cny_rate','service_fee_pct','service_fee_high_pct','service_fee_high_from_mnt','service_fee_min_mnt','china_shipping_cny','local_delivery_mnt','usd_mnt_rate','customs_duty_pct','vat_pct','frag_fee_pct','frag_mnt_per_cny'];
+export const PRICE_KEYS = ['markup_pct','goods_cny_rate','service_fee_pct','service_fee_high_pct','service_fee_high_from_mnt','service_fee_min_mnt','china_shipping_cny','local_delivery_mnt','usd_mnt_rate','customs_duty_pct','vat_pct','frag_fee_pct','frag_mnt_per_cny'];
 const NUMERIC = new Set(['cargo_yuan','cargo_kg','cargo_m3','hicargo_branch_id', ...PRICE_KEYS]);
 export async function getSettings() {
   const s = { ...DEFAULTS };
