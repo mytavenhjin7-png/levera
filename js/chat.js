@@ -53,6 +53,17 @@
       brand: 'Our houses: ' + (LV.brands || LV.corridor).map(c => c.name).join(', ') + '.',
       def: 'I can help with delivery, payment, returns and our brands. For anything else, call 9993 5918.'
     };
+    // product questions work without the server too: match the catalogue already loaded in the page
+    const STOP = /^(une|хэд|вэ|бэ|үнэ|байна|байгаа|юу|уу|үү|hed|ve|bga|price|how|much|is|the|do|you|have|a|an|of|for)$/;
+    const words = s.replace(/[’']/g, '').split(/[^\p{L}\p{N}]+/u).filter(w => w && !STOP.test(w));
+    if (words.some(w => w.length > 1) && LV.products) {
+      const hits = LV.uniq(LV.products).map(p => {
+        const hay = (p.brand + ' ' + p.en + ' ' + p.mn).toLowerCase().replace(/[’']/g, ''), toks = new Set(hay.split(/[^\p{L}\p{N}]+/u));
+        let sc = 0; for (const w of words) if (toks.has(w)) sc += 3; else if (w.length > 2 && hay.includes(w)) sc += 1;
+        return [sc - LV.fame(p) / 1000, p];
+      }).filter(x => x[0] >= 3).sort((a, b) => b[0] - a[0]).slice(0, 4).map(x => x[1]);
+      if (hits.length) return (mn ? 'Манайд байгаа:\n' : 'In stock with us:\n') + hits.map(p => '• ' + p.brand + ' — ' + LV.nm(p) + ' · ' + LV.money(p.price) + '\n  product.html?id=' + p.id).join('\n') + (mn ? '\nҮнэд карго, хүргэлт багтсан. 7–14 хоногт хүргэнэ.' : '\nCargo and delivery included. Arrives in 7–14 days.');
+    }
     if (/хүрг|хоног|ирэх|deliver|ship|cargo|карго|days|how long/.test(s)) return A.ship;
     if (/буца|соли|return|exchange|refund/.test(s)) return A.ret;
     if (/qpay|төл|pay|банк|bank|card|карт/.test(s)) return A.pay;
