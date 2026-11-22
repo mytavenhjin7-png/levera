@@ -58,13 +58,15 @@ await step('tracker shows Ereen', async () => {
 });
 await step('admin product edit reprices', async () => {
   await p.goto(base + '/admin.html#products', { waitUntil: 'networkidle' });
+  // remember the real values so the test leaves the catalogue exactly as it found it
+  const before = (await (await fetch(base + '/api/admin/products?q=kobe-6-protro-grinch', { headers: { Authorization: 'Bearer ' + token } })).json()).rows.find(x => x.id === 'nike-kobe-6-protro-grinch');
   await p.fill('#pq', 'kobe-6-protro-grinch'); await p.waitForTimeout(800);
   const row = p.locator('tr[data-id="nike-kobe-6-protro-grinch"]');
   await row.locator('[data-k="cny"]').fill('3399'); await row.locator('[data-save]').click(); await p.waitForTimeout(600);
   const r = await (await fetch(base + '/api/products/nike-kobe-6-protro-grinch')).json();
   console.log('   new price', r.product.price, r.product.src);
   // put the catalogue back the way it was
-  await fetch(base + '/api/admin/products/nike-kobe-6-protro-grinch', { method: 'PATCH', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify({ cny: 3500, price_source: 'estimate' }) });
+  await fetch(base + '/api/admin/products/nike-kobe-6-protro-grinch', { method: 'PATCH', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify({ cny: before.cny, price_source: before.price_source }) });
   await p.screenshot({ path: `${out}/admin-products.png` });
 });
 await step('admin settings', async () => { await p.goto(base + '/admin.html#settings', { waitUntil: 'networkidle' }); await p.click('#calc'); await p.waitForTimeout(500); console.log('   ', await p.textContent('#cOut')); await p.screenshot({ path: `${out}/admin-settings.png` }); });

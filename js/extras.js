@@ -61,9 +61,10 @@
     }
     const sig = [];
     for (let i = 0; sig.length < 40 && i < 30; i++) for (const f of FAM) if (byFam[f] && byFam[f][i]) sig.push(byFam[f][i]);
-    const winter = ps.filter(p => WINTER.has(p.type) || (p.type === 'jacket' && ['the-north-face', 'arcteryx', 'columbia'].includes(p.b)) || (p.b === 'columbia') || /shearling/.test(p.id || ''));
+    // Columbia first (all of it), then other warm outerwear; no Acne Studios here
+    const winter = ps.filter(p => p.b !== 'acne-studios' && (WINTER.has(p.type) || (p.type === 'jacket' && ['the-north-face', 'arcteryx', 'columbia'].includes(p.b)) || p.b === 'columbia')).sort((a, b) => (b.b === 'columbia') - (a.b === 'columbia'));
     const pickWinter = []; const perBrand = {};
-    for (const p of winter) { perBrand[p.b] = (perBrand[p.b] || 0) + 1; if (perBrand[p.b] <= 3) pickWinter.push(p); }
+    for (const p of winter) { perBrand[p.b] = (perBrand[p.b] || 0) + 1; if (p.b === 'columbia' || perBrand[p.b] <= 3) pickWinter.push(p); }
     const seen = seenList();
     // best sellers from real paid orders; until enough pieces have sold, an honestly-named featured pick
     const sold = ps.filter(p => p.sold > 0).sort((a, b) => b.sold - a.sold);

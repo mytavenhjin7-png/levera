@@ -605,3 +605,6 @@ html.lb-on{overflow:hidden}
 /* checkout without a reachable server: the order as text to send by SMS */
 .co-off-text{white-space:pre-wrap;font-family:var(--mono,monospace);font-size:14px;line-height:1.6;background:#fff;border:1px solid rgba(0,0,0,.1);padding:18px 20px;border-radius:8px;max-width:640px;margin:0 0 24px}
 .cd-actions{display:flex;flex-wrap:wrap;gap:10px}
+
+/* real low stock, set by the owner in admin */
+.card .left-banner{position:absolute;left:0;right:0;bottom:0;z-index:2;background:#9b2c1f;color:#fff;font-family:var(--mono,monospace);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:7px 8px}

@@ -151,6 +151,7 @@ async function connect() {
     if (!(await cols('products')).includes('photo_src')) await db.exec('ALTER TABLE products ADD COLUMN photo_src TEXT');
     if (!(await cols('products')).includes('photos')) await db.exec('ALTER TABLE products ADD COLUMN photos TEXT');
     if (!(await cols('orders')).includes('customer_id')) await db.exec('ALTER TABLE orders ADD COLUMN customer_id INTEGER');
+    if (!(await cols('products')).includes('stock_left')) await db.exec('ALTER TABLE products ADD COLUMN stock_left INTEGER DEFAULT 0');
     if (!(await cols('products')).includes('discount_pct')) await db.exec('ALTER TABLE products ADD COLUMN list_mnt INTEGER; ALTER TABLE products ADD COLUMN discount_pct INTEGER DEFAULT 0');
     if (!(await cols('products')).includes('retail_usd')) await db.exec('ALTER TABLE products ADD COLUMN retail_usd REAL');
     if (!(await cols('orders')).includes('kind')) await db.exec("ALTER TABLE orders ADD COLUMN rank_off INTEGER DEFAULT 0; ALTER TABLE orders ADD COLUMN gift_code TEXT; ALTER TABLE orders ADD COLUMN gift_used INTEGER DEFAULT 0; ALTER TABLE orders ADD COLUMN kind TEXT DEFAULT 'goods'");
@@ -181,6 +182,8 @@ async function connect() {
   // orders placed while signed in belong to that customer (added 2026-11)
   if (!(await db.all("SHOW COLUMNS FROM orders LIKE 'customer_id'")).length) await db.exec('ALTER TABLE orders ADD COLUMN customer_id INT NULL, ADD INDEX orders_customer (customer_id)');
   // sale prices (added 2026-10-26)
+  // stock_left: real pieces on hand, typed by the owner in admin; 1–5 shows "Сүүлийн N ширхэг" on the card
+  if (!(await db.all("SHOW COLUMNS FROM products LIKE 'stock_left'")).length) await db.exec('ALTER TABLE products ADD COLUMN stock_left INT DEFAULT 0');
   if (!(await db.all("SHOW COLUMNS FROM products LIKE 'discount_pct'")).length) await db.exec('ALTER TABLE products ADD COLUMN list_mnt INT AFTER price_mnt, ADD COLUMN discount_pct INT DEFAULT 0 AFTER list_mnt');
   // member ranks and gift cards (added 2026-11)
   if (!(await db.all("SHOW COLUMNS FROM orders LIKE 'kind'")).length) await db.exec("ALTER TABLE orders ADD COLUMN rank_off INT DEFAULT 0, ADD COLUMN gift_code VARCHAR(24) NULL, ADD COLUMN gift_used INT DEFAULT 0, ADD COLUMN kind VARCHAR(12) DEFAULT 'goods'");
@@ -313,7 +316,7 @@ export async function seed({ force = false } = {}) {
 }
 
 /* ---------- reads ---------- */
-const PUBLIC_COLS = 'id, brand_slug, line, type, cat, name_en, name_mn, color_key, variant, cny, retail_usd, weight_kg, len_cm, wid_cm, hei_cm, sizes, img, photo, photos, featured, sort, cargo_mnt, price_mnt, list_mnt, discount_pct, price_source, dewu_url';
+const PUBLIC_COLS = 'id, brand_slug, line, type, cat, name_en, name_mn, color_key, variant, cny, retail_usd, weight_kg, len_cm, wid_cm, hei_cm, sizes, img, photo, photos, featured, sort, cargo_mnt, price_mnt, list_mnt, discount_pct, stock_left, price_source, dewu_url';
 export const listProducts = (all = false) => db.all(`SELECT ${PUBLIC_COLS}, active FROM products ${all ? '' : 'WHERE active=1'} ORDER BY brand_slug, sort`);
 export const getProduct = id => db.get(`SELECT ${PUBLIC_COLS}, active, dewu_spu, render FROM products WHERE id=?`, [id]);
 export const listBrands = () => db.all('SELECT b.*, (SELECT COUNT(*) FROM products p WHERE p.brand_slug=b.slug AND p.active=1) AS count FROM brands b ORDER BY sort');

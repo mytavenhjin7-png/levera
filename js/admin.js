@@ -76,7 +76,7 @@
       '<span class="muted" id="ptotal"></span></div>' +
       '<div class="card-a" style="padding:14px 18px"><b>Хямдрал</b> <span class="muted" style="font-size:13px">— дээрх шүүлтүүрийн брэнд/ангиллын бүх бараанд жинхэнэ хямдрал тавина (үнэ бодитоор буурна, хуучин үнэ зураастай харагдана). 0% = хямдрал цуцлах.</span><div class="bar" style="margin:10px 0 0"><input id="dp" type="number" min="0" max="90" step="5" value="30" style="width:90px"> %<button class="btn-s" id="dgo">Хямдрал тавих</button><span class="muted" id="dout"></span></div></div>' +
       '<p class="muted" style="font-size:13px;margin:0 0 12px">Барааны үнэ (¥), жин, хайрцгийн хэмжээг засаад <b>Хадгалах</b> дарахад карго болон эцсийн үнэ шууд дахин бодогдоно. Зураг дээр дарж бодит зураг оруулна.</p>' +
-      '<div class="tbl-wrap"><table><thead><tr><th>Зураг</th><th>Бараа</th><th>Үнэ ¥</th><th>Жин кг</th><th>Хайрцаг см (У×Ө×Г)</th><th>Эх сурвалжийн холбоос</th><th>Карго</th><th>Хямдрал %</th><th>Үнэ</th><th>Идэвх</th><th></th></tr></thead><tbody id="pt"></tbody></table></div>' +
+      '<div class="tbl-wrap"><table><thead><tr><th>Зураг</th><th>Бараа</th><th>Үнэ ¥</th><th>Жин кг</th><th>Хайрцаг см (У×Ө×Г)</th><th>Эх сурвалжийн холбоос</th><th>Карго</th><th>Хямдрал %</th><th title="Бодит үлдэгдэл. 1–5 бол «Сүүлийн N ширхэг» гэж харагдана">Үлдэгдэл</th><th>Үнэ</th><th>Идэвх</th><th></th></tr></thead><tbody id="pt"></tbody></table></div>' +
       '<div class="pager"><button class="btn-s ghost" id="pp">←</button><span class="mono" id="pn"></span><button class="btn-s ghost" id="pnx">→</button></div>' +
       '<input type="file" id="pf" accept="image/jpeg,image/png,image/webp" hidden>';
     let qt = 0;
@@ -99,7 +99,7 @@
       '<td><input class="w" data-k="weight_kg" type="number" min="0" step="0.05" value="' + p.weight_kg + '"></td>' +
       '<td style="white-space:nowrap"><input class="w" data-k="len_cm" type="number" min="0" value="' + p.len_cm + '">×<input class="w" data-k="wid_cm" type="number" min="0" value="' + p.wid_cm + '">×<input class="w" data-k="hei_cm" type="number" min="0" value="' + p.hei_cm + '"></td>' +
       '<td><input class="url" data-k="dewu_url" type="url" placeholder="https://…" value="' + esc(p.dewu_url || '') + '"></td>' +
-      '<td class="num">' + money(p.cargo_mnt) + '</td><td><input class="w" data-k="discount_pct" type="number" min="0" max="90" step="5" value="' + (p.discount_pct || 0) + '"></td>' +
+      '<td class="num">' + money(p.cargo_mnt) + '</td><td><input class="w" data-k="discount_pct" type="number" min="0" max="90" step="5" value="' + (p.discount_pct || 0) + '"></td><td><input class="w" data-k="stock_left" type="number" min="0" step="1" value="' + (p.stock_left || 0) + '"></td>' +
       '<td class="num"><b>' + money(p.price_mnt) + '</b>' + (p.discount_pct > 0 ? '<div class="muted" style="font-size:11px;text-decoration:line-through">' + money(p.list_mnt) + '</div>' : '') + '</td>' +
       '<td><input data-k="active" type="checkbox"' + (p.active ? ' checked' : '') + ' style="width:auto"></td>' +
       '<td><button class="btn-s" data-save disabled>Хадгалах</button></td></tr>';

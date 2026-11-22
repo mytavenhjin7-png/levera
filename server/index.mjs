@@ -57,6 +57,7 @@ function compact(p, rv, full = false) {
   if (rv) out.rv = rv;
   // on sale: the real (lower) price is p.price_mnt; was = the normal price it came down from
   if (p.discount_pct > 0 && p.list_mnt > p.price_mnt) { out.off = p.discount_pct; out.was = p.list_mnt; }
+  if (p.stock_left > 0 && p.stock_left <= 5) out.left = p.stock_left;
   return out;
 }
 async function ratingMap() {
@@ -484,7 +485,7 @@ route('POST', '/api/chat', async req => {
 });
 
 /* ---------- admin ---------- */
-const PRODUCT_EDITABLE = { discount_pct: 'pct', cny: 'num', retail_usd: 'usd', weight_kg: 'num', len_cm: 'num', wid_cm: 'num', hei_cm: 'num', name_en: 'str', name_mn: 'str', active: 'bool', featured: 'num', dewu_url: 'str', dewu_spu: 'str', price_source: 'str', sizes: 'json' };
+const PRODUCT_EDITABLE = { stock_left: 'num', discount_pct: 'pct', cny: 'num', retail_usd: 'usd', weight_kg: 'num', len_cm: 'num', wid_cm: 'num', hei_cm: 'num', name_en: 'str', name_mn: 'str', active: 'bool', featured: 'num', dewu_url: 'str', dewu_spu: 'str', price_source: 'str', sizes: 'json' };
 route('GET', '/api/admin/me', () => ({ ok: true }), { admin: true });
 route('GET', '/api/admin/stats', async () => ({
   products: await db.get('SELECT COUNT(*) n, SUM(active) active, SUM(price_source<>\'estimate\') live, SUM(photo IS NOT NULL) photos FROM products'),
