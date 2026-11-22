@@ -601,3 +601,7 @@ html.lb-on{overflow:hidden}
   body:has(.pdp-sticky) .cc-launch{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
   body:has(.pdp-sticky) footer{padding-bottom:80px}
 }
+
+/* checkout without a reachable server: the order as text to send by SMS */
+.co-off-text{white-space:pre-wrap;font-family:var(--mono,monospace);font-size:14px;line-height:1.6;background:#fff;border:1px solid rgba(0,0,0,.1);padding:18px 20px;border-radius:8px;max-width:640px;margin:0 0 24px}
+.cd-actions{display:flex;flex-wrap:wrap;gap:10px}

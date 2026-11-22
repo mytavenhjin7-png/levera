@@ -75,9 +75,28 @@
       }) });
       LV.bag.clear(); try { const d = JSON.parse(localStorage.getItem(DRAFT) || '{}'); delete d.note; localStorage.setItem(DRAFT, JSON.stringify(d)); } catch (e2) {}   // keep name, phone and address for the next order
       done(r);
-    } catch (err) { showErr(err.status && err.status < 500 && err.message ? err.message : t.co_err_net); }
+    } catch (err) {
+      // no store server reachable (static hosting, outage): hand the order over by SMS / phone instead of losing it
+      if (!err.status || err.status === 404 || err.status === 405 || err.status >= 500) offline({ name, phone, address, district: form.elements.district.value, note: form.elements.note.value.trim(), items });
+      else showErr(err.message || t.co_err_net);
+    }
     finally { placing = false; submit.classList.remove('busy'); submit.disabled = !ack.checked; }
   });
+
+  function offline(o) {
+    const t = T(), mn = LV.lang === 'mn';
+    let total = 0;
+    const lines = o.items.map(x => { const p = LV.byId.get(x.id); total += p.price * x.q; return '- ' + p.brand + ' ' + p.en + (x.size ? ' (' + x.size + ')' : '') + ' x' + x.q + ' = ' + money(p.price * x.q); });
+    const text = [(mn ? 'LEVERA захиалга' : 'LEVERA order'), ...lines, (mn ? 'Нийт: ' : 'Total: ') + money(total), o.name + ', ' + o.phone, o.district + ', ' + o.address, o.note].filter(Boolean).join('\n');
+    $('#coGrid').hidden = true; $('#coDone').hidden = false; document.querySelector('.co-head').hidden = true;
+    $('#coDone').innerHTML = '<div class="cd-head"><div class="eyebrow">' + t.co_off_k + '</div><h1>' + t.co_off_h + '</h1><p>' + t.co_off_p + '</p></div>' +
+      '<pre class="co-off-text">' + LV.esc(text) + '</pre>' +
+      '<div class="cd-actions"><a class="btn ink" href="sms:+97699935918?&body=' + encodeURIComponent(text) + '"><span>' + t.co_off_sms + '</span></a>' +
+      '<button type="button" class="btn" id="coOffCopy"><span>' + t.co_off_copy + '</span></button>' +
+      '<a class="btn" href="tel:+97699935918"><span>' + t.co_off_call + ' 9993 5918</span></a></div>';
+    $('#coOffCopy').addEventListener('click', e => { try { navigator.clipboard.writeText(text); e.currentTarget.querySelector('span').textContent = t.copied || 'Copied'; } catch (e2) {} });
+    scrollTo({ top: 0 });
+  }
 
   let order = null;
   function done(r) {
