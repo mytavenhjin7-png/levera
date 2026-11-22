@@ -70,7 +70,8 @@
     const sold = ps.filter(p => p.sold > 0).sort((a, b) => b.sold - a.sold);
     const best = sold.length >= 4 ? sold.slice(0, 16) : ps.filter(p => p.feat > 0).concat(sig.slice(0, 6)).slice(0, 16);
     edit.insertAdjacentHTML('afterend',
-      rail('bestRail', sold.length >= 4 ? t.best_k : t.pick_k, sold.length >= 4 ? t.best_h : t.pick_h, best, sold.length >= 4 ? 'shop.html?sort=best' : 'shop.html', t.best_all) +
+      // best sellers only from real paid orders; no stand-in section before that
+      (sold.length >= 4 ? rail('bestRail', t.best_k, t.best_h, sold.slice(0, 16), 'shop.html?sort=best', t.best_all) : '') +
       rail('sigRail', t.sig_k, t.sig_h, sig.slice(0, 24), 'shop.html?brand=nike&cat=footwear', t.sig_all) +
       rail('winterRail', t.win_k, t.win_h, pickWinter.slice(0, 16), 'shop.html?type=puffer', t.win_all) +
       (seen.length >= 2 ? rail('seenRail', t.seen_k, t.seen_h, seen.slice(0, 12)) : ''));
