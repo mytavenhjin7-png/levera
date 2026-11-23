@@ -608,3 +608,8 @@ html.lb-on{overflow:hidden}
 
 /* real low stock, set by the owner in admin */
 .card .left-banner{position:absolute;left:0;right:0;bottom:0;z-index:2;background:#9b2c1f;color:#fff;font-family:var(--mono,monospace);font-size:11px;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:7px 8px}
+
+/* honest selling aids: arrival dates, guarantees, best-seller badge */
+.pdp-arrive{margin:14px 0 6px;font-size:14px}
+.pdp-arrive b{font-weight:600}
+.card .tag.best{background:#8A6A3B;color:#fff}

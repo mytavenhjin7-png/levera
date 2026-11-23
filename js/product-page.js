@@ -43,6 +43,8 @@
     if (p.rv && p.rv[1]) data.aggregateRating = { '@type': 'AggregateRating', ratingValue: p.rv[0], reviewCount: p.rv[1] };
     ld.textContent = JSON.stringify(data);
   }
+  // order today → arrives between these dates (the 7–14 day promise as real calendar days)
+  const arrive = d => { const x = new Date(); x.setDate(x.getDate() + d); return LV.lang === 'mn' ? (x.getMonth() + 1) + '/' + x.getDate() : x.toLocaleDateString('en-GB', { month: 'short', day: 'numeric' }); };
   function render() {
     const t = T();
     if (err) {
@@ -73,7 +75,8 @@
         '<div class="pdp-actions"><button type="button" class="pdp-act fav-btn" data-fav="' + esc(p.id) + '" aria-pressed="' + !!(LV.isSaved && LV.isSaved(p.id)) + '"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg><span class="mono">' + t.fav_save + '</span></button>' +
           '<button type="button" class="pdp-act" data-share><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg><span class="mono">' + t.share + '</span></button></div>' +
         '<a class="pdp-call" href="tel:+97699935918"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>' + t.p_call + '</span><b>9993 5918</b></a>' +
-        '<ul class="pdp-trust"><li>' + t.p_eta_v + '</li><li>QPay</li></ul>' +
+        '<p class="pdp-arrive">' + LV.fill(t.p_arrive, { a: arrive(7), b: arrive(14) }) + '</p>' +
+        '<ul class="pdp-trust"><li>' + t.p_g_auth + '</li><li>' + t.p_g_free + '</li><li>' + t.p_g_pay + '</li></ul>' +
         '<div class="pdp-sticky" id="pSticky"><span class="ps-price">' + money(p.price) + '</span><button type="button" class="btn ink" id="pBuy2"><span>' + t.p_order + '</span><span aria-hidden="true">→</span></button></div>' +
         fragBlock(t) +
         '<dl class="pdp-facts">' +
