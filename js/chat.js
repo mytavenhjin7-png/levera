@@ -91,7 +91,7 @@
   async function ask(text) {
     text = text.trim(); if (!text) return;
     if (busy) return;
-    sugs.hidden = true;
+    sugs.hidden = true; box.classList.add('chatting');
     bubble('me', text); turns.push({ role: 'user', content: text });
     const d = bubble('bot', null); setBusy(true);
     const endpoint = window.LEVERA_CHAT_ENDPOINT;
@@ -129,12 +129,17 @@
 
   function open() {
     box.classList.add('on'); box.setAttribute('aria-hidden', 'false'); launch.setAttribute('aria-expanded', 'true'); launch.classList.add('hide');
-    if (!greeted) { greeted = true; bubble('bot', T().cc_hi); renderSugs(); }
-    setTimeout(() => inp.focus(), 120);
+    // first view: the welcome panel with a big question box and common questions; the chat log takes over once they ask
+    if (!greeted) { greeted = true; bubble('bot', T().cc_hi); }
+    setTimeout(() => (box.classList.contains('chatting') ? inp : $('#ccBigIn')).focus(), 120);
   }
   function close() { box.classList.remove('on'); box.setAttribute('aria-hidden', 'true'); launch.setAttribute('aria-expanded', 'false'); launch.classList.remove('hide'); launch.focus(); }
   launch.addEventListener('click', open);
   $('#ccClose').addEventListener('click', close);
+  $('#ccMin').addEventListener('click', close);
+  $('#ccBig').addEventListener('submit', e => { e.preventDefault(); const v = $('#ccBigIn').value; $('#ccBigIn').value = ''; ask(v); setTimeout(() => inp.focus(), 50); });
+  $('#ccBigIn').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('#ccBig').requestSubmit(); } });
+  $('#ccHome').addEventListener('click', e => { const b = e.target.closest('[data-q]'); if (b) { ask(T()[b.dataset.q] || b.textContent); setTimeout(() => inp.focus(), 50); } });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && box.classList.contains('on')) close(); });
   form.addEventListener('submit', e => { e.preventDefault(); if (busy) { if (ctl) ctl.abort(); return; } const v = inp.value; inp.value = ''; ask(v); });
   sugs.addEventListener('click', e => { const b = e.target.closest('.cc-sug'); if (b) ask(b.textContent); });

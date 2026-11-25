@@ -85,7 +85,7 @@ function brandTexture(name, cap) {
   g.shadowBlur = 0; g.lineJoin = 'round'; g.lineWidth = Math.max(2, fs * .014); g.strokeStyle = '#fff';
   g.strokeText(label, 1024, 315);
   g.shadowBlur = 12;
-  g.font = '500 40px "JetBrains Mono", monospace';
+  g.font = '500 40px Manrope, monospace';
   if ('letterSpacing' in g) g.letterSpacing = '12px';
   g.fillText(cap.toUpperCase(), 1024, 440);
   const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
@@ -178,7 +178,7 @@ function frame(now) {
 }
 
 (document.fonts && document.fonts.load ? Promise.all([
-  document.fonts.load('400 120px "Bodoni Moda"'), document.fonts.load('600 120px "Cinzel"'), document.fonts.load('500 40px "JetBrains Mono"')
+  document.fonts.load('400 120px "Bodoni Moda"'), document.fonts.load('600 120px "Cinzel"'), document.fonts.load('500 40px Manrope')
 ]).catch(() => {}) : Promise.resolve()).then(async () => { await useShopBrands(); buildCorridor(); requestAnimationFrame(frame); });
 // every brand that has pieces in the shop flies past, the hand-picked houses first
 async function useShopBrands() {

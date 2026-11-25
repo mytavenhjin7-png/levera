@@ -11,7 +11,7 @@ const CONTACT_EN = 'Phone: <a href="tel:+97699935918">9993 5918</a>, <a href="te
 
 const PAGES = {
   'privacy.html': {
-    title: 'Нууцлалын бодлого', en: 'Privacy policy',
+    title: 'Нууцлалын бодлого', en: 'Privacy Policy',
     mn: `
 <p>LEVERA онлайн дэлгүүр («бид») таны хувийн мэдээллийг Монгол Улсын <b>Хүний хувийн мэдээлэл хамгаалах тухай хууль</b> болон <b>Хэрэглэгчийн эрхийг хамгаалах тухай хууль</b>-д нийцүүлэн цуглуулж, ашиглаж, хамгаална. Энэ бодлого нь levera-mn.web.app болон LEVERA-гийн бусад цахим хуудсанд хамаарна.</p>
 <h2>1. Бид ямар мэдээлэл цуглуулдаг вэ</h2>
@@ -21,7 +21,7 @@ const PAGES = {
 <li><b>Мэдээллийн хуудас:</b> имэйл хаяг, сонирхсон ангилал.</li>
 <li><b>Сэтгэгдэл:</b> таны оруулсан нэр, үнэлгээ, сэтгэгдэл, захиалгын дугаар (баталгаажуулахад).</li>
 <li><b>AI туслах:</b> чатад бичсэн асуулт, хариулт.</li>
-<li><b>Техникийн:</b> нэвтрэлтийг хадгалах нэг күүки болон таны хөтөч дээр хадгалагдах сагс, хэл зэрэг тохиргоо (<a href="cookies.html">Күүкийн бодлого</a>-ыг үзнэ үү).</li>
+<li><b>Техникийн:</b> нэвтрэлтийг хадгалах нэг күүки болон таны хөтөч дээр хадгалагдах сагс, хэл зэрэг тохиргоо (<a href="cookies.html">Cookies</a>-ыг үзнэ үү).</li>
 </ul>
 <p>Бид банкны карт, нэвтрэх нууц код зэрэг төлбөрийн мэдээллийг <b>огт</b> авдаггүй — төлбөрийг QPay болон таны банкны апп шууд гүйцэтгэнэ.</p>
 <h2>2. Мэдээллийг юунд ашигладаг вэ</h2>
@@ -76,7 +76,7 @@ const PAGES = {
 <h2>Contact</h2><p>${CONTACT_EN}</p>`
   },
   'terms.html': {
-    title: 'Үйлчилгээний нөхцөл', en: 'Terms of service',
+    title: 'Үйлчилгээний нөхцөл', en: 'Terms of Service',
     mn: `
 <p>LEVERA онлайн дэлгүүрээр худалдан авалт хийснээр та доорх нөхцөлийг хүлээн зөвшөөрнө. Эдгээр нөхцөл нь Монгол Улсын хууль тогтоомжид захирагдана.</p>
 <h2>1. Үйлчилгээ</h2>
@@ -133,7 +133,7 @@ const PAGES = {
 <h2>Contact</h2><p>${CONTACT_EN}</p>`
   },
   'cookies.html': {
-    title: 'Күүкийн бодлого', en: 'Cookie policy',
+    title: 'Күүкийн бодлого', en: 'Cookies',
     mn: `
 <p>Күүки (cookie) болон хөтчийн санах ой (localStorage) нь таны төхөөрөмж дээр хадгалагддаг жижиг файл, тэмдэглэл юм. LEVERA зөвхөн сайт ажиллахад <b>зайлшгүй шаардлагатай</b> зүйлсийг ашигладаг. Бид сурталчилгааны күүки, бусдын хянах (tracking) код ашигладаггүй.</p>
 <h2>Күүки</h2>
@@ -166,30 +166,30 @@ const PAGES = {
 };
 
 const page = (file, P) => `<!doctype html>
-<html lang="mn">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>${P.title} — LEVERA</title>
-<meta name="description" content="LEVERA — ${P.title}. ${P.en}.">
+<title>${P.en} — LEVERA</title>
+<meta name="description" content="LEVERA — ${P.en}.">
 <meta name="theme-color" content="#16171A">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="css/legal.css">
 </head>
 <body>
-<header class="lg-top"><a class="lg-logo" href="index.html">LEVERA</a><nav><a href="shop.html">Дэлгүүр</a><a href="privacy.html"${file === 'privacy.html' ? ' aria-current="page"' : ''}>Нууцлал</a><a href="terms.html"${file === 'terms.html' ? ' aria-current="page"' : ''}>Нөхцөл</a><a href="cookies.html"${file === 'cookies.html' ? ' aria-current="page"' : ''}>Күүки</a></nav></header>
+<header class="lg-top"><a class="lg-logo" href="index.html">LEVERA</a><nav><a href="shop.html">Shop</a><a href="privacy.html"${file === 'privacy.html' ? ' aria-current="page"' : ''}>Privacy Policy</a><a href="terms.html"${file === 'terms.html' ? ' aria-current="page"' : ''}>Terms of Service</a><a href="cookies.html"${file === 'cookies.html' ? ' aria-current="page"' : ''}>Cookies</a></nav></header>
 <main class="lg">
-  <div class="lg-k">LEVERA · ${P.en}</div>
-  <h1>${P.title}</h1>
-  <p class="lg-date">Сүүлд шинэчилсэн: ${UPDATED}</p>
-  ${P.mn}
-  <details class="lg-en"><summary>English version</summary>
-    <h1>${P.en}</h1><p class="lg-date">Last updated: ${UPDATED_EN}</p>
-    ${P.enBody}
+  <div class="lg-k">LEVERA</div>
+  <h1>${P.en}</h1>
+  <p class="lg-date">Last updated: ${UPDATED_EN}</p>
+  ${P.enBody}
+  <details class="lg-en" lang="mn"><summary>Монгол хувилбар</summary>
+    <h1>${P.en}</h1><p class="lg-date">Сүүлд шинэчилсэн: ${UPDATED}</p>
+    ${P.mn}
   </details>
 </main>
-<footer class="lg-foot"><span>© 2026 LEVERA</span><a href="privacy.html">Нууцлалын бодлого</a><a href="terms.html">Үйлчилгээний нөхцөл</a><a href="cookies.html">Күүкийн бодлого</a><a href="index.html">Нүүр</a></footer>
+<footer class="lg-foot"><span>© 2026 LEVERA</span><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="cookies.html">Cookies</a><a href="index.html">LEVERA</a></footer>
 <script src="js/consent.js" defer></script>
 </body>
 </html>
