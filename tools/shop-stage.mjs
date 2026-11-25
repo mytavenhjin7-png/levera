@@ -28,6 +28,9 @@ function typeOf(p) {
   if (/zip hoodie|zip top|track top/.test(t)) return 'zip';
   if (/hoodie/.test(t)) return 'hoodie';
   if (/sweatshirt|crew/.test(t)) return 'crew';
+  if (/polo shirts?/.test(p.product_type.toLowerCase())) return 'polo';
+  if (/jumper|knit|cardigan/.test(t)) return 'knit';
+  if (/overshirt/.test(t) || /^shirts?$/.test(p.product_type.toLowerCase())) return 'shirt';
   if (/long-sleeve|long sleeve/.test(t)) return 'longsleeve';
   if (/tee|t-shirt|tank/.test(t)) return 'tee';
   if (/jacket/.test(t)) return 'jacket';

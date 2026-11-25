@@ -67,7 +67,7 @@ body.sub .nav .lang button[aria-pressed="true"] span{color:var(--bg)}
 .brand-rail{border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:sticky;top:calc(env(safe-area-inset-top,0px) + 70px);z-index:20;background:rgba(239,237,232,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .rail{display:flex;gap:6px;overflow-x:auto;padding:12px 0;scrollbar-width:none;scroll-snap-type:x proximity}
 .rail::-webkit-scrollbar{display:none}
-.rail a{flex-shrink:0;scroll-snap-align:start;height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;border:1px solid transparent;font-family:var(--brand);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);transition:color .25s,border-color .25s,background .25s}
+.rail a{flex-shrink:0;scroll-snap-align:start;height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;border:1px solid transparent;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);transition:color .25s,border-color .25s,background .25s}
 .rail a:hover{color:var(--ink);border-color:var(--line)}
 .rail a[aria-current]{background:var(--ink);color:var(--bg)}
 .shop-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(28px,4vw,56px);padding-top:32px;padding-bottom:clamp(72px,8vw,120px)}
