@@ -13,7 +13,7 @@ const brands = await dbm.db.all('SELECT slug FROM brands');
 const day = d => (d ? new Date(d) : new Date()).toISOString().slice(0, 10);
 
 // sitemap
-const urls = [['', '1.0'], ['shop.html', '0.9'], ['shop.html?cat=fragrance', '0.8'], ['shop.html?cat=footwear', '0.8'], ['shop.html?cat=apparel', '0.7'], ['scent.html', '0.6'], ['reviews.html', '0.5']]
+const urls = [['', '1.0'], ['shop.html', '0.9'], ['privacy.html', '0.2'], ['terms.html', '0.2'], ['cookies.html', '0.2'], ['shop.html?cat=fragrance', '0.8'], ['shop.html?cat=footwear', '0.8'], ['shop.html?cat=apparel', '0.7'], ['scent.html', '0.6'], ['reviews.html', '0.5']]
   .map(([u, p]) => `<url><loc>${SITE}/${u.replace(/&/g, '&amp;')}</loc><priority>${p}</priority></url>`)
   .concat(brands.map(b => `<url><loc>${SITE}/shop.html?brand=${encodeURIComponent(b.slug)}</loc><priority>0.6</priority></url>`))
   .concat(products.map(p => `<url><loc>${SITE}/product.html?id=${encodeURIComponent(p.id)}</loc><lastmod>${day(p.updated_at)}</lastmod><priority>0.5</priority></url>`));

@@ -71,14 +71,14 @@ window.LV = {
       cc_s1:'Хүргэлт хэд хоног вэ?', cc_s2:'Буцаалт хийж болох уу?', cc_s3:'QPay-ээр яаж төлөх вэ?', cc_s4:'Ямар сүрчиг байна?',
       cc_note:'AI туслах алдаа гаргаж болно. Яаралтай бол 9993 5918.', cc_err:'Холболт тасарлаа. Дахин оролдох эсвэл 9993 5918 дугаарт залгаарай.', cc_busy:'Түр ачаалал ихтэй байна. Хэсэг хүлээгээд дахин асуугаарай.',
       pol_k:'Буцаалтын бодлого', pol_h:'Бүх худалдан авалт <em>эцсийн.</em>',
-      pol_p:'Бараа бүрийг таны захиалгаар тусгайлан, дэлхийн шилдэг брэндүүдээс авчирдаг. Иймээс захиалга баталгаажсаны дараа буцаалт, солилт хийх боломжгүй. Хэмжээ, загвар, өнгөө эргэлзэж байвал захиалахаасаа өмнө бидэнтэй холбогдоорой. Манай баг таныг итгэлтэй сонголт хийхэд тусална.',
+      pol_p:'Бараа бүрийг таны захиалгаар тусгайлан, дэлхийн шилдэг брэндүүдээс авчирдаг. Иймээс сэтгэлээ өөрчилсөн, хэмжээ тохироогүй шалтгаанаар буцаалт, солилт хийх боломжгүй. Харин буруу, гэмтэлтэй эсвэл хуурамч бараа ирвэл бид солих эсвэл мөнгийг бүрэн буцаана — хүлээн авснаас хойш 3 хоногт мэдэгдээрэй. Хэмжээ, өнгөө эргэлзэж байвал захиалахаасаа өмнө бидэнтэй холбогдоорой.',
       pol_cta:'Захиалахаас өмнө зөвлөгөө авах',
       s_title:'Хайлт', s_ph:'Брэнд, бараа, ангилал хайх…', s_pop:'Түгээмэл хайлт', s_brands:'Брэндүүд', close:'Хаах', s_new:'Шинэ ирэлт',
       s_count:'“{q}” — {n} бараа олдлоо', s_none:'Тохирох бараа олдсонгүй. Өөр брэнд эсвэл ангиллаар хайгаад үзээрэй.',
       b_title:'Сагс', b_total:'Нийт', b_note:'Карго, хүргэлт үнэд багтсан · 7–14 хоногт хүргэнэ', b_pay:'QPay-ээр төлөх',
       b_empty_h:'Таны сагс хоосон байна', b_empty_p:'Энэ долоо хоногийн сонголтоос эхлээрэй.', b_rm:'Хасах', b_qty:'Тоо ширхэг',
       b_added:'{x} сагсанд нэмэгдлээ', b_view:'Сагс үзэх',
-      b_final_h:'Бүх худалдан авалт эцсийн', b_final_p:'Бараа бүрийг таны захиалгаар тусгайлан авчирдаг тул буцаалт, солилт хийгдэхгүй.', b_ack:'Буцаалт, солилт хийгдэхгүйг ойлгож байна',
+      b_final_h:'Бүх худалдан авалт эцсийн', b_final_p:'Бараа бүрийг таны захиалгаар тусгайлан авчирдаг тул сэтгэлээ өөрчилсөн, хэмжээ тохироогүй шалтгаанаар буцаалт, солилт хийгдэхгүй. Буруу, гэмтэлтэй бараа ирвэл солих эсвэл мөнгийг буцаана.', b_ack:'Буцаалт, солилт хийгдэхгүйг ойлгож байна',
       q_title:'QPay нэхэмжлэх', q_note:'Дурын банкны аппаар уншуулна уу. Энэ бол жишээ нэхэмжлэх. Жинхэнэ төлбөр backend холбогдсоны дараа үүснэ.', q_back:'Сагс руу буцах'
     },
     en: {
@@ -115,14 +115,14 @@ window.LV = {
       cc_s1:'How long is delivery?', cc_s2:'Can I return an item?', cc_s3:'How do I pay with QPay?', cc_s4:'Which fragrances do you have?',
       cc_note:'AI can make mistakes. For anything urgent call 9993 5918.', cc_err:'The connection dropped. Try again or call 9993 5918.', cc_busy:'We’re busy right now. Please try again in a moment.',
       pol_k:'Returns policy', pol_h:'Every purchase <em>is final.</em>',
-      pol_p:'Every piece is sourced to order, especially for you, from the world’s leading houses. For that reason we can’t accept returns or exchanges once an order is confirmed. Unsure about a size, fit or colour? Talk to us before you order and our team will help you choose with confidence.',
+      pol_p:'Every piece is sourced to order for you from the world’s leading houses, so change-of-mind and size returns aren’t possible. If a piece arrives wrong, damaged or counterfeit, we replace it or refund you in full — just tell us within 3 days of delivery. Unsure about size or colour? Ask us before you order.',
       pol_cta:'Get advice before you order',
       s_title:'Search', s_ph:'Search brands, pieces, categories…', s_pop:'Popular', s_brands:'Brands', close:'Close', s_new:'New in',
       s_count:'{n} results for “{q}”', s_none:'Nothing matches yet. Try another brand or category.',
       b_title:'Bag', b_total:'Total', b_note:'Cargo and delivery included · arrives in 7–14 days', b_pay:'Pay with QPay',
       b_empty_h:'Your bag is empty', b_empty_p:'Start with this week’s edit.', b_rm:'Remove', b_qty:'Quantity',
       b_added:'{x} added to your bag', b_view:'View bag',
-      b_final_h:'Every purchase is final', b_final_p:'Each piece is sourced to order for you, so returns and exchanges aren’t possible.', b_ack:'I understand returns and exchanges aren’t possible',
+      b_final_h:'Every purchase is final', b_final_p:'Each piece is sourced to order for you, so change-of-mind and size returns aren’t possible. Wrong or damaged pieces are replaced or refunded.', b_ack:'I understand returns and exchanges aren’t possible',
       q_title:'QPay invoice', q_note:'Scan with any bank app. This is an example invoice; real payments start once the backend is connected.', q_back:'Back to bag'
     }
   }
