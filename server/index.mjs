@@ -592,7 +592,7 @@ route('POST', '/api/admin/products', async req => {
   const usd = Number(b.retail_usd) > 0 ? Number(b.retail_usd) : null;
   await db.run(`INSERT INTO products(id,brand_slug,line,type,cat,name_en,name_mn,color_key,variant,cny,retail_usd,weight_kg,len_cm,wid_cm,hei_cm,sizes,img,price_source,featured,active,sort)
     VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
-    [id, brand, model, type, T.cat, colour ? model + sep + colour : model, colour ? model + sep + (str(b.colour_mn, 80) || colour) : model, null, colour || null,
+    [id, brand, model, type, T.cat, colour ? model + sep + colour : model, colour ? model + sep + colour : model, null, colour || null,
      cny, usd, Number(b.weight_kg) > 0 ? Number(b.weight_kg) : T.w, T.box[0], T.box[1], T.box[2], JSON.stringify(sizes), '', 'manual', b.featured ? 1 : 0, 1, sort]);
   await repriceOne(id); invalidate();
   return db.get('SELECT * FROM products WHERE id=?', [id]);
