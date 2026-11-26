@@ -562,7 +562,7 @@ html.m-menu-on{overflow:hidden}
 .cc-head .st .dot{width:7px;height:7px;border-radius:50%;background:#7FD1A0;display:inline-block}
 .cc-min{margin-left:auto}
 .cc-min + .cc-x{margin-left:6px}
-.cc-home{flex:1;overflow:auto;display:flex;flex-direction:column;background:var(--bg)}
+.cc-home{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;background:var(--bg)}
 .cc.chatting .cc-home{display:none}
 .cc:not(.chatting) .cc-log,.cc:not(.chatting) .cc-sugs,.cc:not(.chatting) .cc-form,.cc:not(.chatting) .cc-note{display:none}
 .cc-hero{background:#060D1C;color:#EDE8DE;padding:18px 18px 26px;border-radius:0 0 26px 26px}
@@ -582,3 +582,4 @@ html.m-menu-on{overflow:hidden}
 .cc-faq-i:hover{background:#F6F4F0}
 .cc-faq-i .ico{width:40px;height:40px;border-radius:12px;background:#F1ECE2;color:#8A6A3B;display:grid;place-items:center;flex-shrink:0}
 .cc-faq-i .chev{margin-left:auto;color:#9a9a9a}
+.cc-home>*{flex-shrink:0}

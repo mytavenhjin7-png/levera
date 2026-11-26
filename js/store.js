@@ -60,7 +60,7 @@
       '<div class="frame">' +
         '<span class="ph"><b>' + esc(initials(p.brand)) + '</b></span>' +
         '<a class="frame-link" href="' + LV.url(p) + '" tabindex="-1" aria-hidden="true"><img loading="' + (i < 8 ? 'eager' : 'lazy') + '" decoding="async" alt="" src="' + esc(p.img) + '" onload="this.classList.add(\'ready\')"></a>' +
-        (p.off ? '<span class="tag sale">−' + p.off + '%</span>' : (LV.fame && LV.fame(p) < 12) || p.feat >= 15 ? '<span class="tag hot best">' + (t.bestseller || t.hot) + '</span>' : (p.feat || (LV.fame && LV.fame(p) < 999)) ? '<span class="tag hot">' + (t.hot || t.isNew) + '</span>' : '') +
+        (p.off ? '<span class="tag sale">−' + p.off + '%</span>' : (LV.fame && LV.fame(p) < 999) ? '<span class="tag hot">' + t.hot + '</span>' : '') +
         '<button type="button" class="fav" data-fav="' + esc(p.id) + '" aria-pressed="' + !!(LV.isSaved && LV.isSaved(p.id)) + '" aria-label="' + esc(t.fav_add || 'Save') + '"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.6 4.5 7.1 4.5c2 0 3.6 1.1 4.9 2.8 1.3-1.7 2.9-2.8 4.9-2.8 3.5 0 5.7 3.5 4.4 6.8-1.8 4.6-9.3 9.2-9.3 9.2z"/></svg></button>' +
         (p.left ? '<span class="left-banner">' + LV.fill(t.left_n || 'Last {n} left', { n: p.left }) + '</span>' : '') +
         '<span class="eta">' + t.days + '</span>' +

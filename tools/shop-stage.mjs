@@ -77,7 +77,7 @@ if (mode === 'stage') {
           const an = await analyse(Buffer.from(await r.arrayBuffer()));
           const shoe = ['sneaker', 'runner', 'slide'].includes(type);
           const s = await render(an, { footwear: shoe && !shots.length, flip: shoe && !shots.length && an.facesRight === false });
-          if (shots.some(x => ham(x.hash, s.hash) < 5)) continue;   // only the same picture twice
+          if (shots.some(x => ham(x.hash, s.hash) < (process.env.HAM ? +process.env.HAM : 5))) continue;   // only the same picture twice
           shots.push(s);
         } catch {}
       }
