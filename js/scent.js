@@ -174,13 +174,20 @@
   }
   function question() {
     const q = Q[st.step], n = st.step + 1, a = st.ans[st.step];
-    box().innerHTML = '<section class="sq-q sq-in" aria-live="polite">' +
+    // left: a famous fragrance that changes every step, so the quiz feels like a boutique, not a form
+    const fam = LV.products.filter(p => p.cat === 'fragrance' && LV.fame(p) < 999).sort((x, y) => LV.fame(x) - LV.fame(y));
+    const seen = new Set(), pool = fam.filter(p => { const k = p.b + (p.line || ''); if (seen.has(k)) return false; seen.add(k); return true; });
+    const hero = pool.length ? pool[st.step % pool.length] : null;
+    box().innerHTML = '<div class="sq-wrap sq-in"><aside class="sq-vis" aria-hidden="true"><div class="sq-vis-k">LEVERA · ' + L('Үнэр сонгогч', 'Scent finder') + '</div>' +
+      '<div class="sq-vis-n">' + String(n).padStart(2, '0') + '</div>' +
+      (hero ? '<div class="sq-vis-img"><img alt="" src="' + esc(hero.img) + '"></div><div class="sq-vis-cap"><span>' + esc(hero.brand) + '</span>' + esc(hero.line || hero.en) + '</div>' : '') +
+      '</aside><section class="sq-q" aria-live="polite">' +
       '<div class="sq-top"><button type="button" class="sq-back" data-sq="back" aria-label="' + L('Буцах', 'Back') + '">←</button>' +
       '<div class="sq-bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="' + n + '">' + Q.map((_, i) => '<i' + (i < n ? ' class="on"' : '') + '></i>').join('') + '</div>' +
       '<span class="mono sq-n">' + String(n).padStart(2, '0') + ' / 10</span></div>' +
       '<h2>' + esc(L(q.q[0], q.q[1])) + '</h2>' +
       '<div class="sq-opts' + (q.o.length === 3 ? ' three' : '') + '" role="radiogroup">' + q.o.map((o, i) =>
-        '<button type="button" role="radio" aria-checked="' + (a === i) + '" class="sq-opt" data-opt="' + i + '"><span class="sq-l mono">' + 'ABCD'[i] + '</span><span class="sq-t">' + esc(L(o.t[0], o.t[1])) + '</span><span class="sq-s">' + esc(L(o.s[0], o.s[1])) + '</span></button>').join('') + '</div></section>';
+        '<button type="button" role="radio" aria-checked="' + (a === i) + '" class="sq-opt" data-opt="' + i + '"><span class="sq-l mono">' + 'ABCD'[i] + '</span><span class="sq-t">' + esc(L(o.t[0], o.t[1])) + '</span><span class="sq-s">' + esc(L(o.s[0], o.s[1])) + '</span><span class="sq-go" aria-hidden="true">→</span></button>').join('') + '</div></section></div>';
   }
   function sizeChips(r) {
     if (r.x.sizes.length < 2) return '';

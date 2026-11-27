@@ -1,0 +1,14 @@
+firebase.json
+.firebaserc
+node_modules
+functions
+server
+tools
+data
+deploy
+uploads/live
+*.md
+Dockerfile
+docker-compose.yml
+package.json
+package-lock.json
