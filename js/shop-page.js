@@ -82,7 +82,8 @@
     const info = '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F5A623"/><path d="M12 10.5v6M12 7.2v.1" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>';
     const frag = LV.products.filter(p => p.b === b.slug).every(p => p.cat === 'fragrance');
     const notes = [t.bc_n1, frag ? t.bc_n_frag : t.bc_n2];
-    el.innerHTML = '<div class="bc-logo" aria-hidden="true"><span>' + esc(b.name) + '</span></div><div class="bc-body">' +
+    const logo = (window.LV_LOGOS || []).includes(b.slug);
+    el.innerHTML = (logo ? '<div class="bc-logo has-img"><img src="assets/logos/' + b.slug + '.png" alt="' + esc(b.name) + ' logo" width="160" height="160"></div>' : '<div class="bc-logo" aria-hidden="true"><span>' + esc(b.name) + '</span></div>') + '<div class="bc-body">' +
       '<h2 class="bc-name">' + esc(b.name) + '</h2>' +
       '<div class="bc-meta">' + esc(mn ? b.city_mn : b.city_en) + '</div>' +
       '<div class="bc-links"><a href="#grid" class="bc-l">' + ico('<path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3a4 4 0 0 1-8 0z"/>') + t.bc_products + ' <b>' + b.count + '</b></a>' +
