@@ -75,13 +75,32 @@
       LV.brands.map(b => '<a href="shop.html?brand=' + b.slug + '" data-brand="' + b.slug + '"' + (st.brand === b.slug ? ' aria-current="true"' : '') + '>' + esc(b.name) + '</a>').join('');
     const cur = $('#rail [aria-current]'); if (cur) cur.scrollIntoView({ block: 'nearest', inline: 'center' });
   }
+  // brand page header: logo tile, name, links (products, reviews, share) and the return notices
+  function brandCard(b) {
+    const t = T(), el = $('#bcard'), mn = LV.lang === 'mn';
+    const ico = d => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
+    const info = '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F5A623"/><path d="M12 10.5v6M12 7.2v.1" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>';
+    const frag = LV.products.filter(p => p.b === b.slug).every(p => p.cat === 'fragrance');
+    const notes = [t.bc_n1, frag ? t.bc_n_frag : t.bc_n2];
+    el.innerHTML = '<div class="bc-logo" aria-hidden="true"><span>' + esc(b.name) + '</span></div><div class="bc-body">' +
+      '<h2 class="bc-name">' + esc(b.name) + '</h2>' +
+      '<div class="bc-meta">' + esc(mn ? b.city_mn : b.city_en) + '</div>' +
+      '<div class="bc-links"><a href="#grid" class="bc-l">' + ico('<path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3a4 4 0 0 1-8 0z"/>') + t.bc_products + ' <b>' + b.count + '</b></a>' +
+      '<a href="reviews.html?brand=' + b.slug + '" class="bc-l">' + ico('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>') + t.bc_reviews + '</a>' +
+      '<span class="bc-sep"></span><button type="button" class="bc-l" id="bcShare">' + ico('<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.5M8.2 13.2l7.6 4.5"/>') + '<span>' + t.bc_share + '</span></button></div></div>' +
+      '<div class="bc-notes">' + notes.map(n => '<div class="bc-note">' + info + '<div><b>' + t.bc_note + '</b><p>' + n + '</p></div></div>').join('') + '</div>';
+    $('#bcShare').addEventListener('click', async e => { const u = location.origin + location.pathname + '?brand=' + b.slug;
+      try { if (navigator.share) await navigator.share({ title: b.name + ' — LEVERA', url: u }); else { await navigator.clipboard.writeText(u); e.currentTarget.querySelector('span').textContent = t.bc_copied; } } catch (x) {} });
+  }
   function renderHead() {
+    $('#bcard').hidden = !(st.brand && LV.brandMap.get(st.brand)); document.querySelector('.shop-hero').classList.toggle('is-brand', !$('#bcard').hidden);
     const t = T(), b = st.brand && LV.brandMap.get(st.brand);
     if (b) {
       $('#shK').textContent = (LV.lang === 'mn' ? b.city_mn : b.city_en) + ' · ' + fill(t.brand_n, { n: b.count });
       $('#shH').innerHTML = '<span class="bh">' + esc(b.name) + '</span>';
       $('#shP').textContent = LV.lang === 'mn' ? b.blurb_mn : b.blurb_en;
       document.title = b.name + ' — LEVERA';
+      brandCard(b);
     } else if (st.sale) {
       $('#shK').textContent = t.sale_k;
       $('#shH').innerHTML = t.sale_h;
