@@ -76,22 +76,27 @@
     const cur = $('#rail [aria-current]'); if (cur) cur.scrollIntoView({ block: 'nearest', inline: 'center' });
   }
   // brand page header: logo tile, name, links (products, reviews, share) and the return notices
+  // brand page: a dark editorial band — the logo large in white (or the name as a wordmark when there is no logo),
+  // the brand's own products blurred behind it, one quiet meta row, and the return terms folded into one line
   function brandCard(b) {
     const t = T(), el = $('#bcard'), mn = LV.lang === 'mn';
-    const ico = d => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
-    const info = '<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#F5A623"/><path d="M12 10.5v6M12 7.2v.1" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>';
-    const frag = LV.products.filter(p => p.b === b.slug).every(p => p.cat === 'fragrance');
-    const notes = [t.bc_n1, frag ? t.bc_n_frag : t.bc_n2];
-    const logo = (window.LV_LOGOS || []).includes(b.slug);
-    el.innerHTML = (logo ? '<div class="bc-logo has-img"><img src="assets/logos/' + b.slug + '.png" alt="' + esc(b.name) + ' logo" width="160" height="160"></div>' : '<div class="bc-logo" aria-hidden="true"><span>' + esc(b.name) + '</span></div>') + '<div class="bc-body">' +
-      '<h2 class="bc-name">' + esc(b.name) + '</h2>' +
-      '<div class="bc-meta">' + esc(mn ? b.city_mn : b.city_en) + '</div>' +
-      '<div class="bc-links"><a href="#grid" class="bc-l">' + ico('<path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3a4 4 0 0 1-8 0z"/>') + t.bc_products + ' <b>' + b.count + '</b></a>' +
-      '<a href="reviews.html?brand=' + b.slug + '" class="bc-l">' + ico('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>') + t.bc_reviews + '</a>' +
-      '<span class="bc-sep"></span><button type="button" class="bc-l" id="bcShare">' + ico('<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.5M8.2 13.2l7.6 4.5"/>') + '<span>' + t.bc_share + '</span></button></div></div>' +
-      '<div class="bc-notes">' + notes.map(n => '<div class="bc-note">' + info + '<div><b>' + t.bc_note + '</b><p>' + n + '</p></div></div>').join('') + '</div>';
-    $('#bcShare').addEventListener('click', async e => { const u = location.origin + location.pathname + '?brand=' + b.slug;
-      try { if (navigator.share) await navigator.share({ title: b.name + ' — LEVERA', url: u }); else { await navigator.clipboard.writeText(u); e.currentTarget.querySelector('span').textContent = t.bc_copied; } } catch (x) {} });
+    const own = LV.products.filter(p => p.b === b.slug);
+    const frag = own.every(p => p.cat === 'fragrance');
+    const kind = (window.LV_LOGOS || {})[b.slug];
+    const bg = own.filter(p => p.img).slice(0, 3).map((p, i) => '<i style="background-image:url(' + JSON.stringify(p.img).slice(1, -1) + ')" class="bc-bg' + i + '"></i>').join('');
+    const mark = kind
+      ? '<h1 class="bc-mark"><img class="bc-img ' + (kind === 'm' ? 'mono' : 'col') + '" src="assets/logos/' + b.slug + '.png" alt="' + esc(b.name) + '"></h1>'
+      : '<h1 class="bc-mark bc-word">' + esc(b.name) + '</h1>';
+    const ico = d => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
+    el.innerHTML = '<div class="bc-band"><div class="bc-bgs" aria-hidden="true">' + bg + '</div><div class="bc-in">' +
+      '<div class="bc-k">' + esc(mn ? b.city_mn : b.city_en) + '<span></span>' + b.count + ' ' + t.bc_products.toLowerCase() + '</div>' + mark +
+      '<div class="bc-acts"><a href="#grid" class="bc-pill solid">' + t.bc_shop_all + ' <span aria-hidden="true">↓</span></a>' +
+      '<a href="reviews.html?brand=' + b.slug + '" class="bc-pill">' + ico('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>') + t.bc_reviews + '</a>' +
+      '<button type="button" class="bc-pill" id="bcShare">' + ico('<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.5M8.2 13.2l7.6 4.5"/>') + '<span>' + t.bc_share + '</span></button></div>' +
+      '</div></div>' +
+      '<details class="bc-terms"><summary>' + ico('<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>') + t.bc_terms + '</summary><p>' + t.bc_n1 + '</p><p>' + (frag ? t.bc_n_frag : t.bc_n2) + '</p></details>';
+    $('#bcShare').addEventListener('click', async e => { const u = location.origin + location.pathname + '?brand=' + b.slug, s = e.currentTarget.querySelector('span');
+      try { if (navigator.share) await navigator.share({ title: b.name + ' — LEVERA', url: u }); else { await navigator.clipboard.writeText(u); s.textContent = t.bc_copied; } } catch (x) {} });
   }
   function renderHead() {
     $('#bcard').hidden = !(st.brand && LV.brandMap.get(st.brand)); document.querySelector('.shop-hero').classList.toggle('is-brand', !$('#bcard').hidden);
