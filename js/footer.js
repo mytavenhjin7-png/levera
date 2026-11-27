@@ -53,7 +53,7 @@
     } else box.innerHTML = '';
     const list = mine(); $('#trMine').innerHTML = list.length ? '<span class="f-label">' + t.tr_mine + '</span>' + list.map(n => '<button type="button" class="tr-chip mono" data-no="' + LV.esc(n) + '">' + LV.esc(n) + '</button>').join('') : '';
   }
-  const help = () => '<p class="tr-help">' + T().tr_help + ' <a href="tel:+97699935918">9993 5918</a> · <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></p>';
+  const help = () => '<p class="tr-help">' + T().tr_help + ' <a href="tel:+97699935918">9993 5918</a> · <a href="https://www.facebook.com/profile.php?id=61595775015553" target="_blank" rel="noopener">Facebook</a></p>';
   const showErr = msg => { err.innerHTML = LV.esc(msg) + ' ' + help(); err.hidden = false; inp.setAttribute('aria-invalid', 'true'); stage = 0; found = null; renderSteps(); };
   async function track(no) {
     try {
