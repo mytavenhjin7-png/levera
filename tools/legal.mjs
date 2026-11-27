@@ -185,7 +185,7 @@ const page = (file, P) => `<!doctype html>
   <p class="lg-date">Last updated: ${UPDATED_EN}</p>
   ${P.enBody}
   <details class="lg-en" lang="mn"><summary>Монгол хувилбар</summary>
-    <h1>${P.en}</h1><p class="lg-date">Сүүлд шинэчилсэн: ${UPDATED}</p>
+    <h2 class="lg-h">${P.title}</h2><p class="lg-date">Сүүлд шинэчилсэн: ${UPDATED}</p>
     ${P.mn}
   </details>
 </main>

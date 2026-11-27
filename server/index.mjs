@@ -717,6 +717,8 @@ function serveStatic(req, res) {
   const file = normalize(join(ROOT, path));
   if (!ok || !file.startsWith(ROOT + sep) || !existsSync(file) || !statSync(file).isFile()) {
     if (req.method === 'GET' && !extname(path)) { res.writeHead(302, { Location: '/' }); return res.end(); }
+    // missing pages get the store's own 404 page (as Firebase and Vercel do); other files a plain 404
+    if (extname(path) === '.html' && existsSync(join(ROOT, '404.html'))) { res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' }); return res.end(readFileSync(join(ROOT, '404.html'))); }
     res.writeHead(404, { 'Content-Type': 'text/plain' }); return res.end('Not found');
   }
   const ext = extname(file).toLowerCase();

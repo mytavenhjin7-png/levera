@@ -16,3 +16,5 @@ firebase-debug.log
 .firebase/
 uploads/live/
 *.tmp.mjs
+
+.vercel
