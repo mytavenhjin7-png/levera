@@ -23,5 +23,7 @@ for (const f of readdirSync(DIR).filter(f => f.endsWith('.png')).sort()) {
   const mono = clear > 0.15 * (ink + clear) && colour < 0.04 * ink && light < 0.25 * ink;
   out[f.replace('.png', '')] = mono ? 'm' : 'c';
 }
-writeFileSync(join(ROOT, 'js', 'logos.js'), '/* brand logos in assets/logos: m = single dark colour (shown white on dark), c = colour */\nwindow.LV_LOGOS = ' + JSON.stringify(out) + ';\n');
+// brand cover photos (assets/covers/<slug>.jpg) shown behind the logo on the brand page
+let covers = []; try { covers = readdirSync(join(ROOT, 'assets', 'covers')).filter(f => f.endsWith('.jpg')).map(f => f.replace('.jpg', '')).sort(); } catch {}
+writeFileSync(join(ROOT, 'js', 'logos.js'), '/* brand logos in assets/logos: m = single dark colour (shown white on dark), c = colour; LV_COVERS = brands with a cover photo */\nwindow.LV_LOGOS = ' + JSON.stringify(out) + ';\nwindow.LV_COVERS = ' + JSON.stringify(covers) + ';\n');
 console.log(Object.keys(out).length, 'logos;', Object.values(out).filter(v => v === 'c').length, 'colour');

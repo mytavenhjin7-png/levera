@@ -649,3 +649,14 @@ html.lb-on{overflow:hidden}
 
 .pdp-msg{margin-top:8px}
 .pdp-msg b{color:#0866FF;letter-spacing:0}
+
+/* brand cover photo behind the logo: full bleed, slow push-in, dark gradient so the white logo reads */
+.bc-band.has-cover{min-height:clamp(420px,62vh,640px)}
+.bc-cover{position:absolute;inset:0;z-index:-2;background:#0b0b0c center/cover no-repeat;transform:scale(1.04);animation:bcPush 22s ease-out forwards}
+@keyframes bcPush{to{transform:scale(1.12)}}
+.bc-band.has-cover::after{background:linear-gradient(180deg,rgba(8,8,10,.55) 0%,rgba(8,8,10,.35) 40%,rgba(8,8,10,.8) 100%),radial-gradient(70% 60% at 50% 50%,rgba(8,8,10,.15),rgba(8,8,10,.55))}
+.bc-band.has-cover .bc-img.mono{filter:brightness(0) invert(1) drop-shadow(0 6px 30px rgba(0,0,0,.45))}
+@media (prefers-reduced-motion:reduce){.bc-cover{animation:none}}
+@media (max-width:640px){.bc-band.has-cover{min-height:380px}}
+.bc-band.has-cover .bc-img{max-height:clamp(84px,16vh,160px);max-width:min(600px,80vw)}
+.bc-band.has-cover .bc-img.col{max-height:clamp(60px,11vh,110px)}

@@ -88,7 +88,9 @@
       ? '<div class="bc-mark" role="heading" aria-level="1"><img class="bc-img ' + (kind === 'm' ? 'mono' : 'col') + '" src="assets/logos/' + b.slug + '.png" alt="' + esc(b.name) + '"></div>'
       : '<div class="bc-mark bc-word" role="heading" aria-level="1">' + esc(b.name) + '</div>';
     const ico = d => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
-    el.innerHTML = '<div class="bc-band"><div class="bc-bgs" aria-hidden="true">' + bg + '</div><div class="bc-in">' +
+    const cover = (window.LV_COVERS || []).includes(b.slug);
+    el.innerHTML = '<div class="bc-band' + (cover ? ' has-cover' : '') + '">' +
+      (cover ? '<i class="bc-cover" aria-hidden="true" style="background-image:url(assets/covers/' + b.slug + '.jpg)"></i>' : '<div class="bc-bgs" aria-hidden="true">' + bg + '</div>') + '<div class="bc-in">' +
       '<div class="bc-k">' + esc(mn ? b.city_mn : b.city_en) + '<span></span>' + b.count + ' ' + t.bc_products.toLowerCase() + '</div>' + mark +
       '<div class="bc-acts"><a href="#grid" class="bc-pill solid">' + t.bc_shop_all + ' <span aria-hidden="true">↓</span></a>' +
       '<a href="reviews.html?brand=' + b.slug + '" class="bc-pill">' + ico('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>') + t.bc_reviews + '</a>' +
