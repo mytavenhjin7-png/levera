@@ -44,6 +44,12 @@
       '<div class="prail" role="list">' + items.map(p => '<div role="listitem">' + LV.card(p, 99) + '</div>').join('') + '</div></div></section>';
   }
   const SIG = /^(KD |LeBron |Kobe |Book )/;
+  // Mongolia's favourites, mixed by category so the row reads like the city in winter
+  const MN_FAV = ['the-north-face-1996-retro-nuptse-jacket-black', 'oakley-holbrook-matte-black-prizm-black', 'timberland-6-inch-premium-waterproof-boot-wheat-nubuck',
+    'dior-sauvage-edt-100-ml', 'columbia-street-heights-insulated-hooded-jacket-black', 'ugg-classic-mini-ii-chestnut', 'canada-goose-expedition-parka-black',
+    'nike-air-force-1-07-white', 'oakley-radar-ev-path-polished-white-prizm-road', 'columbia-bugaboot-iii-black', 'ysl-beauty-y-eau-de-parfum-100-ml',
+    'the-north-face-himalayan-down-parka-black', 'adidas-samba-og-white', 'arcteryx-alpha-sv-jacket-black', 'oakley-jawbreaker-matte-black-prizm-road',
+    'ugg-tasman-slipper-chestnut', 'new-balance-9060-bisque-sea-salt', 'timberland-6-inch-premium-waterproof-boot-black-nubuck'];
   const WINTER = new Set(['puffer', 'coat']);
   function homeRails() {
     const edit = $('#edit'); if (!edit) return;
@@ -71,6 +77,9 @@
     // best sellers from real paid orders; until enough pieces have sold, an honestly-named featured pick
     const sold = ps.filter(p => p.sold > 0).sort((a, b) => b.sold - a.sold);
     const best = sold.length >= 4 ? sold.slice(0, 16) : ps.filter(p => p.feat > 0).concat(sig.slice(0, 6)).slice(0, 16);
+    // first thing on the page: what people in Mongolia buy most (winter outerwear, Oakley, Timberland, UGG, the big scents)
+    const mnFav = MN_FAV.map(id => LV.byId.get(id)).filter(Boolean);
+    if (mnFav.length >= 6) edit.insertAdjacentHTML('beforebegin', rail('mnRail', t.mn_k, t.mn_h, mnFav, 'shop.html', t.mn_all));
     edit.insertAdjacentHTML('afterend',
       // best sellers only from real paid orders; no stand-in section before that
       (sold.length >= 4 ? rail('bestRail', t.best_k, t.best_h, sold.slice(0, 16), 'shop.html?sort=best', t.best_all) : '') +

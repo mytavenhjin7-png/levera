@@ -33,6 +33,7 @@
 <url><loc>https://levera-mn.web.app/shop.html?brand=bvlgari</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=byredo</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=calvin-klein</loc><priority>0.6</priority></url>
+<url><loc>https://levera-mn.web.app/shop.html?brand=canada-goose</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=carhartt</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=carolina-herrera</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=cartier</loc><priority>0.6</priority></url>
@@ -102,6 +103,7 @@
 <url><loc>https://levera-mn.web.app/shop.html?brand=nn07</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=nocta</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=norse-projects</loc><priority>0.6</priority></url>
+<url><loc>https://levera-mn.web.app/shop.html?brand=oakley</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=onitsuka-tiger</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=parfums-de-marly</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=paul-smith</loc><priority>0.6</priority></url>
@@ -119,8 +121,10 @@
 <url><loc>https://levera-mn.web.app/shop.html?brand=ten-c</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=the-north-face</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=tiffany</loc><priority>0.6</priority></url>
+<url><loc>https://levera-mn.web.app/shop.html?brand=timberland</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=tom-ford-beauty</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=tommy-hilfiger</loc><priority>0.6</priority></url>
+<url><loc>https://levera-mn.web.app/shop.html?brand=ugg</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=uniqlo</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=valentino</loc><priority>0.6</priority></url>
 <url><loc>https://levera-mn.web.app/shop.html?brand=van-cleef-arpels</loc><priority>0.6</priority></url>
@@ -863,6 +867,8 @@
 <url><loc>https://levera-mn.web.app/product.html?id=calvin-klein-sheer-beauty-eau-de-toilette-50-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=calvin-klein-truth-edp-100-ml</loc><lastmod>2026-11-21</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=calvin-klein-truth-edt-100-ml</loc><lastmod>2026-11-21</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=canada-goose-chilliwack-bomber-black</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=canada-goose-expedition-parka-black</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=carhartt-detroit-jacket-brown</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=carhartt-essentials-bag-black</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=carhartt-nimbus-pullover-navy</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
@@ -956,6 +962,7 @@
 <url><loc>https://levera-mn.web.app/product.html?id=coach-pure-platinum-parfum-100-ml</loc><lastmod>2026-11-21</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=coach-signature-edp-100-ml</loc><lastmod>2026-11-21</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=coach-wild-rose-edp-50-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=columbia-bugaboot-iii-black</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=columbia-challenger-ii-insulated-pullover-jacket-black</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=columbia-fairbanks-omni-heat-boots-black</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=columbia-street-commuter-waterproof-insulated-jacket-black</loc><lastmod>2026-11-22</lastmod><priority>0.5</priority></url>
@@ -2286,6 +2293,13 @@
 <url><loc>https://levera-mn.web.app/product.html?id=nike-zoom-vomero-5-platinum-tint-photon-dust</loc><lastmod>2026-11-18</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=nocta-hot-step-air-terra-white</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=nocta-nocta-glide-black</loc><lastmod>2026-10-25</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=oakley-flak-2-0-xl-matte-black-prizm-black-polarized</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=oakley-frogskins-black-ink-prizm-black</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=oakley-gascan-matte-black-prizm-black</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=oakley-holbrook-matte-black-prizm-black</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=oakley-jawbreaker-matte-black-prizm-road</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=oakley-radar-ev-path-polished-white-prizm-road</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=oakley-sutro-matte-black-prizm-road</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=onitsuka-tiger-mexico-66-cream-grey-floss</loc><lastmod>2026-11-04</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=onitsuka-tiger-mexico-66-cream-mako-blue</loc><lastmod>2026-11-04</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=onitsuka-tiger-mexico-66-white-blue</loc><lastmod>2026-11-04</lastmod><priority>0.5</priority></url>
@@ -2539,6 +2553,8 @@
 <url><loc>https://levera-mn.web.app/product.html?id=tiffany-rose-gold-eau-de-parfum-50-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=tiffany-rose-gold-intense-75-ml</loc><lastmod>2026-11-21</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=tiffany-tiffany-co-edp-75-ml</loc><lastmod>2026-11-21</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=timberland-6-inch-premium-waterproof-boot-black-nubuck</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=timberland-6-inch-premium-waterproof-boot-wheat-nubuck</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=tom-ford-beauty-amber-intrigue-eau-de-parfum-50-ml</loc><lastmod>2026-11-18</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=tom-ford-beauty-azure-lime-eau-de-parfum-50-ml</loc><lastmod>2026-11-18</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=tom-ford-beauty-bitter-peach-eau-de-parfum-30-ml</loc><lastmod>2026-11-18</lastmod><priority>0.5</priority></url>
@@ -2651,6 +2667,10 @@
 <url><loc>https://levera-mn.web.app/product.html?id=tom-ford-beauty-white-suede-eau-de-parfum-50-ml</loc><lastmod>2026-11-18</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=tommy-hilfiger-tommy-edt-100-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=tommy-hilfiger-tommy-girl-edt-100-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=ugg-classic-mini-ii-black</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=ugg-classic-mini-ii-chestnut</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=ugg-classic-ultra-mini-chestnut</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
+<url><loc>https://levera-mn.web.app/product.html?id=ugg-tasman-slipper-chestnut</loc><lastmod>2026-11-28</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=valentino-born-in-roma-coral-fantasy-edp-100-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=valentino-born-in-roma-donna-edp-intense-50-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
 <url><loc>https://levera-mn.web.app/product.html?id=valentino-born-in-roma-uomo-eau-de-parfum-intense-50-ml</loc><lastmod>2026-11-20</lastmod><priority>0.5</priority></url>
