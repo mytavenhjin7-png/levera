@@ -85,8 +85,8 @@
     const kind = (window.LV_LOGOS || {})[b.slug];
     const bg = own.filter(p => p.img).slice(0, 3).map((p, i) => '<i style="background-image:url(' + JSON.stringify(p.img).slice(1, -1) + ')" class="bc-bg' + i + '"></i>').join('');
     const mark = kind
-      ? '<h1 class="bc-mark"><img class="bc-img ' + (kind === 'm' ? 'mono' : 'col') + '" src="assets/logos/' + b.slug + '.png" alt="' + esc(b.name) + '"></h1>'
-      : '<h1 class="bc-mark bc-word">' + esc(b.name) + '</h1>';
+      ? '<div class="bc-mark" role="heading" aria-level="1"><img class="bc-img ' + (kind === 'm' ? 'mono' : 'col') + '" src="assets/logos/' + b.slug + '.png" alt="' + esc(b.name) + '"></div>'
+      : '<div class="bc-mark bc-word" role="heading" aria-level="1">' + esc(b.name) + '</div>';
     const ico = d => '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
     el.innerHTML = '<div class="bc-band"><div class="bc-bgs" aria-hidden="true">' + bg + '</div><div class="bc-in">' +
       '<div class="bc-k">' + esc(mn ? b.city_mn : b.city_en) + '<span></span>' + b.count + ' ' + t.bc_products.toLowerCase() + '</div>' + mark +
