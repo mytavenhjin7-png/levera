@@ -586,3 +586,4 @@ html.m-menu-on{overflow:hidden}
 
 .co-terms{margin:12px 0 0;font-size:13px;line-height:1.5;color:var(--mute)}
 .co-terms a{color:inherit;text-decoration:underline}
+html,body{overflow-x:clip}
