@@ -646,3 +646,6 @@ html.lb-on{overflow:hidden}
 .bc-terms[open] summary::after{content:'−'}
 .bc-terms p{margin:10px 0 0 24px;line-height:1.55;max-width:820px}
 @media (max-width:640px){.bc-band{min-height:300px}.bc-in{padding:40px 16px 34px;gap:20px}.bc-bgs i{width:60%}.bc-bgs .bc-bg0{left:-30%}.bc-bgs .bc-bg1{right:-30%}.bc-pill{height:38px;padding:0 14px;font-size:11px}}
+
+.pdp-msg{margin-top:8px}
+.pdp-msg b{color:#0866FF;letter-spacing:0}

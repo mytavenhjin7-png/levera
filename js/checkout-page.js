@@ -1,7 +1,7 @@
 /* LEVERA — checkout: recipient form, bag summary (with size fixes), order → QPay invoice, payment check */
 (function () {
   const LV = window.LV, { $, T, esc, money, fill } = LV;
-  const form = $('#coForm'), ack = $('#coAck'), submit = $('#coSubmit'), errEl = $('#coErr');
+  const form = $('#coForm'), submit = $('#coSubmit'), errEl = $('#coErr');
   let placing = false;
   // keep what the customer typed if they leave and come back
   const DRAFT = 'lv-co-draft';
@@ -58,7 +58,6 @@
     const items = LV.bag.items(), x = items[+sel.dataset.size];
     LV.bag.setQ(+sel.dataset.size, 0); if (sel.value) LV.bag.add(x.id, sel.value, x.q); else LV.bag.add(x.id, null, x.q);
   });
-  ack.addEventListener('change', () => { submit.disabled = !ack.checked || placing; });
   const showErr = m => { errEl.textContent = m; errEl.hidden = !m; };
 
   form.addEventListener('submit', async e => {
@@ -80,7 +79,7 @@
       if (!err.status || err.status === 404 || err.status === 405 || err.status >= 500) offline({ name, phone, address, district: form.elements.district.value, note: form.elements.note.value.trim(), items });
       else showErr(err.message || t.co_err_net);
     }
-    finally { placing = false; submit.classList.remove('busy'); submit.disabled = !ack.checked; }
+    finally { placing = false; submit.classList.remove('busy'); submit.disabled = false; }
   });
 
   function offline(o) {

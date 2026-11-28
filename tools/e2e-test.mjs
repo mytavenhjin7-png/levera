@@ -34,7 +34,7 @@ let orderNo = '';
 await step('checkout + order', async () => {
   await p.goto(base + '/checkout.html', { waitUntil: 'networkidle' });
   await p.fill('#coName', 'Туршилт Бат'); await p.fill('#coPhone', '99112233'); await p.fill('#coAddress', 'ХУД, 15-р хороо, 101 байр, 2 орц, 34 тоот');
-  await p.check('#coAck'); await p.screenshot({ path: `${out}/checkout.png`, fullPage: false });
+  await p.screenshot({ path: `${out}/checkout.png`, fullPage: false });
   await p.click('#coSubmit'); await p.waitForSelector('#coDone:not([hidden]) .cd-pay', { timeout: 10000 });
   orderNo = (await p.textContent('.cd-head h1')).match(/LV-\d\d-\d{4}/)[0];
   await p.screenshot({ path: `${out}/done.png` }); console.log('   order', orderNo);
