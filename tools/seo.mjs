@@ -28,7 +28,7 @@ writeFileSync(join(ROOT, 'manifest.webmanifest'), JSON.stringify({
 }, null, 2));
 
 // <head> tags, between markers so re-running replaces them
-const DESC = 'LEVERA — Улаанбаатар дахь олон брэндийн онлайн дэлгүүр. Nike Kobe, Way of Wade, Dior Sauvage, YSL, Lattafa ба 90+ брэнд. Карго, хүргэлт үнэд багтсан, QPay төлбөр, 7–14 хоногт хүргэлт.';
+const DESC = 'LEVERA — Улаанбаатар дахь олон брэндийн онлайн дэлгүүр. Nike Kobe, Way of Wade, Dior Sauvage, YSL, Lattafa ба 80 брэнд. Карго, хүргэлт үнэд багтсан, QPay төлбөр, 7–14 хоногт хүргэлт.';
 const tags = page => [
   '<!-- seo -->',
   `<meta property="og:type" content="${page === 'product.html' ? 'product' : 'website'}">`,

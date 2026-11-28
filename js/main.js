@@ -24,7 +24,21 @@
     const out = [];
     // fragrances: the best-known bottles first
     if (filter === 'fragrance') pool.map(p => [LV.fame(p), p]).filter(x => x[0] < 999).sort((x, y) => x[0] - y[0]).forEach(x => add(x[1]));
-    else if (filter === 'all') pool.filter(p => LV.fame(p) < 6).sort((x, y) => LV.fame(x) - LV.fame(y)).filter((p, i, a) => a.findIndex(q => q.b === p.b) === i).slice(0, 2).forEach(add);
+    // the 'all' view mixes categories in a fixed rhythm so the first screen shows a multi-brand store, not a sneaker shop:
+    // fragrance, clothing, footwear, fragrance, bags/accessories, clothing, footwear, ...
+    if (filter === 'all') {
+      const q = {}, take = c => { const l = q[c]; while (l && l.length) { const p = l.shift(); const before = out.length; add(p); if (out.length > before) return true; } return false; };
+      for (const c of ['fragrance', 'apparel', 'footwear', 'bags', 'accessories']) {
+        const inCat = pool.filter(p => p.cat === c), rot = [], bb = new Map();
+        inCat.filter(p => !p.feat).forEach(p => { if (!bb.has(p.b)) bb.set(p.b, []); bb.get(p.b).push(p); });
+        for (let r = 0; r < 40; r++) for (const l of bb.values()) if (l[r]) rot.push(l[r]);
+        const famous = c === 'fragrance' ? inCat.filter(p => LV.fame(p) >= 16 && LV.fame(p) < 999).sort((x, y) => LV.fame(x) - LV.fame(y)) : [];
+        q[c] = [...famous, ...inCat.filter(p => p.feat).sort((x, y) => y.feat - x.feat), ...rot];
+      }
+      const rhythm = ['fragrance', 'apparel', 'footwear', 'fragrance', 'bags', 'apparel', 'footwear', 'accessories'];
+      for (let i = 0; out.length < want && i < want * 4; i++) take(rhythm[i % rhythm.length]) || take('fragrance') || take('apparel') || take('footwear');
+      return out.slice(0, want);
+    }
     feat.forEach(add); let round = 0;
     while (out.length < want && round < 60) { for (const list of byBrand.values()) if (list[round]) add(list[round]); round++; }
     return out.slice(0, want);

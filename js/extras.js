@@ -65,6 +65,8 @@
     const winter = ps.filter(p => p.b !== 'acne-studios' && (WINTER.has(p.type) || (p.type === 'jacket' && ['the-north-face', 'arcteryx', 'columbia'].includes(p.b)) || p.b === 'columbia')).sort((a, b) => (b.b === 'columbia') - (a.b === 'columbia'));
     const pickWinter = []; const perBrand = {};
     for (const p of winter) { perBrand[p.b] = (perBrand[p.b] || 0) + 1; if (p.b === 'columbia' || perBrand[p.b] <= 3) pickWinter.push(p); }
+    // the best-known fragrances, one bottle per scent line
+    const fSeen = new Set(), fragRail = ps.filter(p => p.cat === 'fragrance' && LV.fame(p) < 999).sort((x, y) => LV.fame(x) - LV.fame(y)).filter(p => { const k = LV.fame(p); if (fSeen.has(k)) return false; fSeen.add(k); return true; });
     const seen = seenList();
     // best sellers from real paid orders; until enough pieces have sold, an honestly-named featured pick
     const sold = ps.filter(p => p.sold > 0).sort((a, b) => b.sold - a.sold);
@@ -72,8 +74,9 @@
     edit.insertAdjacentHTML('afterend',
       // best sellers only from real paid orders; no stand-in section before that
       (sold.length >= 4 ? rail('bestRail', t.best_k, t.best_h, sold.slice(0, 16), 'shop.html?sort=best', t.best_all) : '') +
-      rail('sigRail', t.sig_k, t.sig_h, sig.slice(0, 24), 'shop.html?brand=nike&cat=footwear', t.sig_all) +
       rail('winterRail', t.win_k, t.win_h, pickWinter.slice(0, 16), 'shop.html?type=puffer', t.win_all) +
+      (fragRail.length >= 6 ? rail('fragRail', t.fr_k, t.fr_h, fragRail.slice(0, 16), 'shop.html?cat=fragrance', t.fr_all) : '') +
+      rail('sigRail', t.sig_k, t.sig_h, sig.slice(0, 12), 'shop.html?brand=nike&cat=footwear', t.sig_all) +
       (seen.length >= 2 ? rail('seenRail', t.seen_k, t.seen_h, seen.slice(0, 12)) : ''));
     syncSaved();
   }
